@@ -19,47 +19,56 @@ class CategoriaController extends Controller
      * Show the form for creating a new resource.
      */
     public function create()
-    {
-        //
-    }
+        {
+            return view('categorias.create');
+        }
 
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(Request $request)
-    {
-        //
-    }
+        {
+            $request->validate([
+                'nome' => 'required',
+                'descricao' => 'required',
+            ]);
 
-    /**
-     * Display the specified resource.
-     */
+            \App\Models\Categoria::create($request->all());
+
+            return redirect()->route('categorias.index');
+        }
+
     public function show(string $id)
-    {
-        //
-    }
+        {
+            $categoria = \App\Models\Categoria::with('livros')->findOrFail($id);
 
-    /**
-     * Show the form for editing the specified resource.
-     */
+            return view('categorias.show', compact('categoria'));
+        }
+
     public function edit(string $id)
-    {
-        //
-    }
+        {
+            $categoria = \App\Models\Categoria::findOrFail($id);
 
-    /**
-     * Update the specified resource in storage.
-     */
+            return view('categorias.edit', compact('categoria'));
+        }
+
     public function update(Request $request, string $id)
-    {
-        //
-    }
+        {
+            $categoria = \App\Models\Categoria::findOrFail($id);
 
-    /**
-     * Remove the specified resource from storage.
-     */
+            $categoria->update($request->all());
+
+            return redirect()->route('categorias.index');
+        }
+
     public function destroy(string $id)
-    {
-        //
-    }
+        {
+            $categoria = \App\Models\Categoria::findOrFail($id);
+
+            if ($categoria->livros()->count() > 0) {
+                return redirect()->route('categorias.index')
+                    ->with('erro', 'Não é possível apagar a categoria, pois já existem livros vinculados a ela.');
+            }
+
+            $categoria->delete();
+
+            return redirect()->route('categorias.index');
+        }
 }

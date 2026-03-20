@@ -19,47 +19,56 @@ class AutorController extends Controller
      * Show the form for creating a new resource.
      */
     public function create()
-    {
-        //
-    }
+        {
+            return view('autores.create');
+        }
 
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(Request $request)
-    {
-        //
-    }
+        {
+            $request->validate([
+                'nome' => 'required',
+                'nacionalidade' => 'required',
+            ]);
 
-    /**
-     * Display the specified resource.
-     */
+            \App\Models\Autor::create($request->all());
+
+            return redirect()->route('autores.index');
+        }
+
     public function show(string $id)
-    {
-        //
-    }
+        {
+            $autor = \App\Models\Autor::with('livros')->findOrFail($id);
 
-    /**
-     * Show the form for editing the specified resource.
-     */
+            return view('autores.show', compact('autor'));
+        }
+
     public function edit(string $id)
-    {
-        //
-    }
+        {
+            $autor = \App\Models\Autor::findOrFail($id);
 
-    /**
-     * Update the specified resource in storage.
-     */
+            return view('autores.edit', compact('autor'));
+        }
+
     public function update(Request $request, string $id)
-    {
-        //
-    }
+        {
+            $autor = \App\Models\Autor::findOrFail($id);
 
-    /**
-     * Remove the specified resource from storage.
-     */
+            $autor->update($request->all());
+
+            return redirect()->route('autores.index');
+        }
+
     public function destroy(string $id)
-    {
-        //
-    }
+        {
+            $autor = \App\Models\Autor::findOrFail($id);
+
+            if ($autor->livros()->count() > 0) {
+                return redirect()->route('autores.index')
+                    ->with('erro', 'Não é possível apagar o autor, pois já existem livros vinculados a ele.');
+            }
+
+            $autor->delete();
+
+            return redirect()->route('autores.index');
+        }
 }

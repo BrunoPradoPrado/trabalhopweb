@@ -9,6 +9,6 @@ class LivroSeeder extends Seeder
 {
     public function run(): void
     {
-        Livro::factory(10)->create();
+        Livro::factory(5)->create();
     }
 }
