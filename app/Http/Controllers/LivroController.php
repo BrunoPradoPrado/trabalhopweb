@@ -6,88 +6,98 @@ use Illuminate\Http\Request;
 
 class LivroController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
-    public function index()
-        {
-            $livros = \App\Models\Livro::with(['autor','categoria','editora'])->get();
-            return view('livros.index', compact('livros'));
+    public function index(Request $request)
+    {
+        $query = \App\Models\Livro::with(['autor','categoria','editora']);
+
+        if ($request->filled('busca')) {
+            $busca = $request->busca;
+
+            $query->where(function ($q) use ($busca) {
+                $q->where('titulo', 'like', "%{$busca}%")
+                  ->orWhereHas('autor', function ($q2) use ($busca) {
+                      $q2->where('nome', 'like', "%{$busca}%");
+                  })
+                  ->orWhereHas('editora', function ($q2) use ($busca) {
+                      $q2->where('nome', 'like', "%{$busca}%");
+                  })
+                  ->orWhereHas('categoria', function ($q2) use ($busca) {
+                      $q2->where('nome', 'like', "%{$busca}%");
+                  });
+            });
         }
 
-    /**
-     * Show the form for creating a new resource.
-     */
+        $query->orderBy('titulo');
+
+        $livros = $query->paginate(10)->withQueryString();
+
+        return view('livros.index', compact('livros'));
+    }
+
     public function create()
-        {
-            $autores = \App\Models\Autor::all();
-            $categorias = \App\Models\Categoria::all();
-            $editoras = \App\Models\Editora::all();
+    {
+        $autores = \App\Models\Autor::all();
+        $categorias = \App\Models\Categoria::all();
+        $editoras = \App\Models\Editora::all();
 
-            return view('livros.create', compact('autores', 'categorias', 'editoras'));
-        }
+        return view('livros.create', compact('autores', 'categorias', 'editoras'));
+    }
 
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(Request $request)
-        {
-            $request->validate([
-                'titulo' => 'required',
-                'autor_id' => 'required',
-                'categoria_id' => 'required',
-                'editora_id' => 'required',
-            ]);
+    {
+        $request->validate([
+            'titulo' => 'required',
+            'ano' => 'required|integer',
+            'autor_id' => 'required',
+            'categoria_id' => 'required',
+            'editora_id' => 'required',
+        ]);
 
-            \App\Models\Livro::create($request->all());
+        \App\Models\Livro::create($request->all());
 
-            return redirect()->route('livros.index');
-        }
+        return redirect()->route('livros.index');
+    }
 
-    /**
-     * Display the specified resource.
-     */
     public function show(string $id)
-        {
-            $livro = \App\Models\Livro::with(['autor','categoria','editora'])->findOrFail($id);
+    {
+        $livro = \App\Models\Livro::with(['autor','categoria','editora'])->findOrFail($id);
 
-            return view('livros.show', compact('livro'));
-        }
+        return view('livros.show', compact('livro'));
+    }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
     public function edit(string $id)
-        {
-            $livro = \App\Models\Livro::findOrFail($id);
+    {
+        $livro = \App\Models\Livro::findOrFail($id);
 
-            $autores = \App\Models\Autor::all();
-            $categorias = \App\Models\Categoria::all();
-            $editoras = \App\Models\Editora::all();
+        $autores = \App\Models\Autor::all();
+        $categorias = \App\Models\Categoria::all();
+        $editoras = \App\Models\Editora::all();
 
-            return view('livros.edit', compact('livro','autores','categorias','editoras'));
-        }
+        return view('livros.edit', compact('livro','autores','categorias','editoras'));
+    }
 
-    /**
-     * Update the specified resource in storage.
-     */
     public function update(Request $request, string $id)
-        {
-            $livro = \App\Models\Livro::findOrFail($id);
+    {
+        $livro = \App\Models\Livro::findOrFail($id);
 
-            $livro->update($request->all());
+        $request->validate([
+            'titulo' => 'required',
+            'ano' => 'required|integer',
+            'autor_id' => 'required',
+            'categoria_id' => 'required',
+            'editora_id' => 'required',
+        ]);
 
-            return redirect()->route('livros.index');
-        }
+        $livro->update($request->all());
 
-    /**
-     * Remove the specified resource from storage.
-     */
+        return redirect()->route('livros.index');
+    }
+
     public function destroy(string $id)
-        {
-            $livro = \App\Models\Livro::findOrFail($id);
-            $livro->delete();
+    {
+        $livro = \App\Models\Livro::findOrFail($id);
+        $livro->delete();
 
-            return redirect()->route('livros.index');
-        }
+        return redirect()->route('livros.index');
+    }
 }

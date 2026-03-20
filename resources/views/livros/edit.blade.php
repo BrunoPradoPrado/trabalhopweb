@@ -20,6 +20,11 @@
     </div>
 
     <div>
+        <label>Ano:</label>
+        <input type="number" name="ano" value="{{ old('ano', $livro->ano) }}">
+    </div>
+
+    <div>
         <label>Autor:</label>
         <select name="autor_id">
             @foreach($autores as $autor)

@@ -6,6 +6,11 @@
 
 <a href="{{ route('categorias.create') }}">Nova Categoria</a>
 
+<form method="GET" action="{{ route('categorias.index') }}">
+    <input type="text" name="busca" placeholder="Buscar..." value="{{ request('busca') }}">
+    <button type="submit">Buscar</button>
+</form>
+
 <table border="1">
 <tr>
     <th>Nome</th>
@@ -18,7 +23,7 @@
     <td>{{ $categoria->nome }}</td>
     <td>{{ $categoria->descricao }}</td>
     <td>
-        <a href="{{ route('categorias.show', $categoria->id) }}">Ver</a>
+        <a href="{{ route('categorias.show', $categoria->id) }}">Detalhes</a>
         <a href="{{ route('categorias.edit', $categoria->id) }}">Editar</a>
 
         <form action="{{ route('categorias.destroy', $categoria->id) }}" method="POST" style="display:inline;">

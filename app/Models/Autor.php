@@ -16,5 +16,5 @@ class Autor extends Model
             return $this->hasMany(\App\Models\Livro::class);
         }
     
-    protected $fillable = ['nome', 'nacionalidade'];
+    protected $fillable = ['nome', 'nacionalidade', 'imagem'];
 }

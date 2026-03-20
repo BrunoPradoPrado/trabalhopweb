@@ -3,72 +3,112 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class AutorController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
-    public function index()
-        {
-            $autores = \App\Models\Autor::all();
-            return view('autores.index', compact('autores'));
+    public function index(Request $request)
+    {
+        $query = \App\Models\Autor::query();
+
+        if ($request->filled('busca')) {
+            $busca = $request->busca;
+
+            $query->where('nome', 'like', "%{$busca}%");
         }
 
-    /**
-     * Show the form for creating a new resource.
-     */
+        $query->orderBy('nome');
+
+        $autores = $query->get();
+
+        return view('autores.index', compact('autores'));
+    }
+
     public function create()
-        {
-            return view('autores.create');
-        }
+    {
+        return view('autores.create');
+    }
 
     public function store(Request $request)
-        {
-            $request->validate([
-                'nome' => 'required',
-                'nacionalidade' => 'required',
-            ]);
+    {
+        $request->validate([
+            'nome' => 'required',
+            'nacionalidade' => 'required',
+            'imagem' => 'nullable|image|mimes:jpg,jpeg,png|max:2048'
+        ]);
 
-            \App\Models\Autor::create($request->all());
+        $dados = $request->only(['nome', 'nacionalidade']);
 
-            return redirect()->route('autores.index');
+        if ($request->hasFile('imagem')) {
+            $dados['imagem'] = $request->file('imagem')->store('autores', 'public');
+        } else {
+            $dados['imagem'] = 'autores/default.png';
         }
+
+        \App\Models\Autor::create($dados);
+
+        return redirect()->route('autores.index')
+            ->with('success', 'Autor criado com sucesso!');
+    }
 
     public function show(string $id)
-        {
-            $autor = \App\Models\Autor::with('livros')->findOrFail($id);
+    {
+        $autor = \App\Models\Autor::with('livros')->findOrFail($id);
 
-            return view('autores.show', compact('autor'));
-        }
+        return view('autores.show', compact('autor'));
+    }
 
     public function edit(string $id)
-        {
-            $autor = \App\Models\Autor::findOrFail($id);
+    {
+        $autor = \App\Models\Autor::findOrFail($id);
 
-            return view('autores.edit', compact('autor'));
-        }
+        return view('autores.edit', compact('autor'));
+    }
 
     public function update(Request $request, string $id)
-        {
-            $autor = \App\Models\Autor::findOrFail($id);
+    {
+        $autor = \App\Models\Autor::findOrFail($id);
 
-            $autor->update($request->all());
+        $request->validate([
+            'nome' => 'required',
+            'nacionalidade' => 'required',
+            'imagem' => 'nullable|image|mimes:jpg,jpeg,png|max:2048'
+        ]);
 
-            return redirect()->route('autores.index');
-        }
+        $dados = $request->only(['nome', 'nacionalidade']);
 
-    public function destroy(string $id)
-        {
-            $autor = \App\Models\Autor::findOrFail($id);
+        if ($request->hasFile('imagem')) {
 
-            if ($autor->livros()->count() > 0) {
-                return redirect()->route('autores.index')
-                    ->with('erro', 'Não é possível apagar o autor, pois já existem livros vinculados a ele.');
+            // remove imagem antiga (se não for a default)
+            if ($autor->imagem && $autor->imagem !== 'autores/default.png') {
+                Storage::disk('public')->delete($autor->imagem);
             }
 
-            $autor->delete();
-
-            return redirect()->route('autores.index');
+            $dados['imagem'] = $request->file('imagem')->store('autores', 'public');
         }
+
+        $autor->update($dados);
+
+        return redirect()->route('autores.index')
+            ->with('success', 'Autor atualizado com sucesso!');
+    }
+
+    public function destroy(string $id)
+    {
+        $autor = \App\Models\Autor::findOrFail($id);
+
+        if ($autor->livros()->count() > 0) {
+            return redirect()->route('autores.index')
+                ->with('erro', 'Não é possível apagar o autor, pois já existem livros vinculados a ele.');
+        }
+
+        // remove imagem (se não for default)
+        if ($autor->imagem && $autor->imagem !== 'autores/default.png') {
+            Storage::disk('public')->delete($autor->imagem);
+        }
+
+        $autor->delete();
+
+        return redirect()->route('autores.index');
+    }
 }

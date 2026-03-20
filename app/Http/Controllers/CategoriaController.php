@@ -9,9 +9,20 @@ class CategoriaController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
         {
-            $categorias = \App\Models\Categoria::all();
+            $query = \App\Models\Categoria::query();
+
+            if ($request->filled('busca')) {
+                $busca = $request->busca;
+
+                $query->where('nome', 'like', "%{$busca}%");
+            }
+
+            $query->orderBy('nome');
+            
+            $categorias = $query->get();
+
             return view('categorias.index', compact('categorias'));
         }
 

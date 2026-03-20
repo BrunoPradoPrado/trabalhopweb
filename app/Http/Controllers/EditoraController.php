@@ -6,9 +6,20 @@ use Illuminate\Http\Request;
 
 class EditoraController extends Controller
 {
-    public function index()
+    public function index(Request $request)
         {
-            $editoras = \App\Models\Editora::all();
+            $query = \App\Models\Editora::query();
+
+            if ($request->filled('busca')) {
+                $busca = $request->busca;
+
+                $query->where('nome', 'like', "%{$busca}%");
+            }
+
+            $query->orderBy('nome');
+            
+            $editoras = $query->get();
+
             return view('editoras.index', compact('editoras'));
         }
     

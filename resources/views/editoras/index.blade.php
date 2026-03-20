@@ -6,6 +6,11 @@
 
 <a href="{{ route('editoras.create') }}">Nova Editora</a>
 
+<form method="GET" action="{{ route('editoras.index') }}">
+    <input type="text" name="busca" placeholder="Buscar..." value="{{ request('busca') }}">
+    <button type="submit">Buscar</button>
+</form>
+
 <table border="1">
 <tr>
     <th>Nome</th>
@@ -18,7 +23,7 @@
     <td>{{ $editora->nome }}</td>
     <td>{{ $editora->cidade }}</td>
     <td>
-        <a href="{{ route('editoras.show', $editora->id) }}">Ver</a>
+        <a href="{{ route('editoras.show', $editora->id) }}">Detalhes</a>
         <a href="{{ route('editoras.edit', $editora->id) }}">Editar</a>
 
         <form action="{{ route('editoras.destroy', $editora->id) }}" method="POST" style="display:inline;">

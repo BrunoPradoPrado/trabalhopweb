@@ -19,7 +19,8 @@ class AutorFactory extends Factory
             {
                 return [
                     'nome' => fake()->name(),
-                    'nacionalidade' => fake()->country()
+                    'nacionalidade' => fake()->country(),
+                    'imagem' => 'autores/default.png'
                 ];
             }
 }
