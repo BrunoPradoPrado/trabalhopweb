@@ -33,9 +33,14 @@ class EditoraController extends Controller
             $request->validate([
                 'nome' => 'required',
                 'cidade' => 'required',
+                'ano_fundacao' => 'nullable|integer'
             ]);
 
-            \App\Models\Editora::create($request->all());
+            \App\Models\Editora::create($request->only([
+                'nome',
+                'cidade',
+                'ano_fundacao'
+            ]));
 
             return redirect()->route('editoras.index');
         }
@@ -58,7 +63,17 @@ class EditoraController extends Controller
         {
             $editora = \App\Models\Editora::findOrFail($id);
 
-            $editora->update($request->all());
+            $request->validate([
+                'nome' => 'required',
+                'cidade' => 'required',
+                'ano_fundacao' => 'nullable|integer'
+            ]);
+
+            $editora->update($request->only([
+                'nome',
+                'cidade',
+                'ano_fundacao'
+            ]));
 
             return redirect()->route('editoras.index');
         }

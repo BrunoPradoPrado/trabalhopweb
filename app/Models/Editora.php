@@ -11,7 +11,7 @@ class Editora extends Model
 
     protected $table = 'editoras';
 
-    protected $fillable = ['nome', 'cidade'];
+    protected $fillable = ['nome', 'cidade', 'ano_fundacao'];
 
     public function livros()
     {

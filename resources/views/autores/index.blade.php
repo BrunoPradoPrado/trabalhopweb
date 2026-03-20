@@ -1,3 +1,7 @@
+@extends('layout')
+
+@section('conteudo')
+
 <h1>Autores</h1>
 
 @if(session('success'))
@@ -48,3 +52,5 @@
 </tr>
 @endforeach
 </table>
+
+@endsection

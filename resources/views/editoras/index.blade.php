@@ -1,3 +1,7 @@
+@extends('layout')
+
+@section('conteudo')
+
 <h1>Editoras</h1>
 
 @if(session('erro'))
@@ -15,6 +19,7 @@
 <tr>
     <th>Nome</th>
     <th>Cidade</th>
+    <th>Ano</th>
     <th>Ações</th>
 </tr>
 
@@ -22,6 +27,7 @@
 <tr>
     <td>{{ $editora->nome }}</td>
     <td>{{ $editora->cidade }}</td>
+    <td>{{ $editora->ano_fundacao ?? '-' }}</td>
     <td>
         <a href="{{ route('editoras.show', $editora->id) }}">Detalhes</a>
         <a href="{{ route('editoras.edit', $editora->id) }}">Editar</a>
@@ -35,3 +41,5 @@
 </tr>
 @endforeach
 </table>
+
+@endsection

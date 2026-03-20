@@ -1,3 +1,7 @@
+@extends('layout')
+
+@section('conteudo')
+
 <h1>Categorias</h1>
 
 @if(session('erro'))
@@ -35,3 +39,5 @@
 </tr>
 @endforeach
 </table>
+
+@endsection

@@ -1,3 +1,7 @@
+@extends('layout')
+
+@section('conteudo')
+
 <h1>Livros</h1>
 
 <a href="{{ route('livros.create') }}">Novo Livro</a>
@@ -41,3 +45,5 @@
 </table>
 
 {{ $livros->links() }}
+
+@endsection
