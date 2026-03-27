@@ -1,11 +1,23 @@
-<h1>{{ $categoria->nome }}</h1>
+@extends('layout')
 
-<p><strong>Descrição:</strong> {{ $categoria->descricao }}</p>
+@section('conteudo')
 
-<h3>Livros:</h3>
+<div class="card shadow-sm p-4">
+    <h1>{{ $categoria->nome }}</h1>
 
-@foreach($categoria->livros as $livro)
-    <p>{{ $livro->titulo }}</p>
-@endforeach
+    <p><strong>Descrição:</strong> {{ $categoria->descricao ?? '-' }}</p>
 
-<a href="{{ route('categorias.index') }}">Voltar</a>
+    <hr>
+
+    <h4>Livros</h4>
+
+    @forelse($categoria->livros as $livro)
+        <p class="mb-1">📚 {{ $livro->titulo }}</p>
+    @empty
+        <p class="text-muted">Nenhum livro cadastrado</p>
+    @endforelse
+
+    <a href="{{ route('categorias.index') }}" class="btn btn-secondary mt-3">Voltar</a>
+</div>
+
+@endsection

@@ -9,10 +9,8 @@ use App\Http\Controllers\UserController;
 
 
 
-Route::get('/teste', function () { return view('teste'); });
 Route::get('/', function () { return view('home'); })->name('home');
 Route::resource('autores', AutorController::class);
 Route::resource('categorias', CategoriaController::class);
 Route::resource('livros', LivroController::class);
 Route::resource('editoras', EditoraController::class);
-Route::resource('users', UserController::class);

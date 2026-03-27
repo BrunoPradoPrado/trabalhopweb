@@ -1,17 +1,33 @@
-<h1>{{ $autor->nome }}</h1>
+@extends('layout')
 
-@if($autor->imagem)
-    <img src="{{ asset('storage/' . $autor->imagem) }}" width="150">
-@endif
+@section('conteudo')
 
-<p><strong>Nacionalidade:</strong> {{ $autor->nacionalidade }}</p>
+<div class="card shadow-sm p-4">
 
-<h3>Livros:</h3>
+    <div class="text-center mb-3">
+        @if($autor->imagem)
+            <img src="{{ asset('storage/' . $autor->imagem) }}" class="rounded-circle shadow" width="150" height="150" style="object-fit: cover;">
+        @else
+            <div class="text-muted">Sem imagem</div>
+        @endif
+    </div>
 
-@forelse($autor->livros as $livro)
-    <p>{{ $livro->titulo }}</p>
-@empty
-    <p>Nenhum livro cadastrado</p>
-@endforelse
+    <h1 class="text-center">{{ $autor->nome }}</h1>
 
-<a href="{{ route('autores.index') }}">Voltar</a>
+    <p class="text-center"><strong>Nacionalidade:</strong> {{ $autor->nacionalidade }}</p>
+
+    <hr>
+
+    <h4>Livros</h4>
+
+    @forelse($autor->livros as $livro)
+        <p class="mb-1">📚 {{ $livro->titulo }}</p>
+    @empty
+        <p class="text-muted">Nenhum livro cadastrado</p>
+    @endforelse
+
+    <a href="{{ route('autores.index') }}" class="btn btn-secondary mt-3">Voltar</a>
+
+</div>
+
+@endsection

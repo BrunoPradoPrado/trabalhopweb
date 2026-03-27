@@ -1,11 +1,25 @@
-<h1>Editar Categoria</h1>
+@extends('layout')
 
-<form action="{{ route('categorias.update', $categoria->id) }}" method="POST">
+@section('conteudo')
+
+<h1 class="mb-4">Editar Categoria</h1>
+
+<form action="{{ route('categorias.update', $categoria->id) }}" method="POST" class="card p-4 shadow-sm">
     @csrf
     @method('PUT')
 
-    <input type="text" name="nome" value="{{ $categoria->nome }}">
-    <input type="text" name="descricao" value="{{ $categoria->descricao }}">
+    <div class="mb-3">
+        <label class="form-label">Nome</label>
+        <input type="text" name="nome" class="form-control" value="{{ $categoria->nome }}" required>
+    </div>
 
-    <button type="submit">Atualizar</button>
+    <div class="mb-3">
+        <label class="form-label">Descrição</label>
+        <input type="text" name="descricao" class="form-control" value="{{ $categoria->descricao }}">
+    </div>
+
+    <button type="submit" class="btn btn-primary">Atualizar</button>
+    <a href="{{ route('categorias.index') }}" class="btn btn-secondary">Voltar</a>
 </form>
+
+@endsection

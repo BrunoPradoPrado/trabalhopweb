@@ -79,7 +79,6 @@ class AutorController extends Controller
 
         if ($request->hasFile('imagem')) {
 
-            // remove imagem antiga (se não for a default)
             if ($autor->imagem && $autor->imagem !== 'autores/default.png') {
                 Storage::disk('public')->delete($autor->imagem);
             }
@@ -102,7 +101,6 @@ class AutorController extends Controller
                 ->with('erro', 'Não é possível apagar o autor, pois já existem livros vinculados a ele.');
         }
 
-        // remove imagem (se não for default)
         if ($autor->imagem && $autor->imagem !== 'autores/default.png') {
             Storage::disk('public')->delete($autor->imagem);
         }

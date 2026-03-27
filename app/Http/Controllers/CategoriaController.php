@@ -6,9 +6,6 @@ use Illuminate\Http\Request;
 
 class CategoriaController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
     public function index(Request $request)
         {
             $query = \App\Models\Categoria::query();
@@ -26,9 +23,7 @@ class CategoriaController extends Controller
             return view('categorias.index', compact('categorias'));
         }
 
-    /**
-     * Show the form for creating a new resource.
-     */
+    
     public function create()
         {
             return view('categorias.create');
