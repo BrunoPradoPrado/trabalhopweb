@@ -9,6 +9,6 @@ class AutorSeeder extends Seeder
 {
     public function run(): void
     {
-        Autor::factory(5)->create();
+        Autor::factory(15)->create();
     }
 }

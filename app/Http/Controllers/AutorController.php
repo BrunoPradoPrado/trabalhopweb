@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use App\Charts\AutoresChart;
+use App\Models\Autor;
+use Barryvdh\DomPDF\Facade\Pdf;
 
 class AutorController extends Controller
 {
@@ -108,5 +111,34 @@ class AutorController extends Controller
         $autor->delete();
 
         return redirect()->route('autores.index');
+    }
+
+    public function report()
+    {
+        $autores = \App\Models\Autor::all();
+
+        $pdf = Pdf::loadView('autores.report', [
+            'titulo' => 'Relatório de Autores',
+            'autores' => $autores
+        ]);
+
+        return $pdf->download('autores.pdf');
+    }
+
+    public function chart(AutoresChart $chart)
+    {
+        $dados = Autor::selectRaw('nacionalidade, COUNT(*) as total')
+            ->groupBy('nacionalidade')
+            ->get();
+
+        $nacionalidades = $dados->pluck('nacionalidade')->toArray();
+        $quantidades = $dados->pluck('total')->toArray();
+
+        $grafico = $chart->build([
+            'nacionalidades' => $nacionalidades,
+            'quantidades' => $quantidades
+        ]);
+
+        return view('autores.chart', compact('grafico'));
     }
 }

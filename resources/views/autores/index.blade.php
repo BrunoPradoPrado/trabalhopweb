@@ -19,10 +19,15 @@
 <div class="d-flex justify-content-between mb-3">
     <a href="{{ route('autores.create') }}" class="btn btn-success">+ Novo Autor</a>
 
-    <form method="GET" action="{{ route('autores.index') }}" class="d-flex">
-        <input type="text" name="busca" class="form-control me-2" placeholder="Buscar..." value="{{ request('busca') }}">
-        <button type="submit" class="btn btn-outline-primary">Buscar</button>
-    </form>
+    <div class="d-flex gap-2">
+        <a href="{{ url('autores/chart') }}" class="btn btn-danger">Gráfico</a>
+        <a href="{{ url('autores/report') }}" class="btn btn-secondary">Relatório</a>
+
+        <form method="GET" action="{{ route('autores.index') }}" class="d-flex">
+            <input type="text" name="busca" class="form-control me-2" placeholder="Buscar..." value="{{ request('busca') }}">
+            <button type="submit" class="btn btn-outline-primary">Buscar</button>
+        </form>
+    </div>
 </div>
 
 <table class="table table-striped table-hover shadow-sm align-middle">

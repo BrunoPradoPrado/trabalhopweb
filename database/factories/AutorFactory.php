@@ -19,7 +19,12 @@ class AutorFactory extends Factory
             {
                 return [
                     'nome' => fake()->name(),
-                    'nacionalidade' => fake()->country(),
+                    'nacionalidade' => fake()->randomElement([
+                        'Brasil',
+                        'EUA',
+                        'França',
+                        'Alemanha'
+                    ]),
                     'imagem' => 'autores/default.png'
                 ];
             }
