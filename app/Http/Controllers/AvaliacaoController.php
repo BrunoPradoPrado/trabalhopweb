@@ -3,63 +3,77 @@
 namespace App\Http\Controllers;
 
 use App\Models\Avaliacao;
+use App\Models\Livro;
 use Illuminate\Http\Request;
 
 class AvaliacaoController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
-    public function index()
+    public function index(Request $request)
     {
-        //
+        $avaliacoes = Avaliacao::with('livro')->get();
+
+        return view('avaliacoes.index', compact('avaliacoes'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
     public function create()
     {
-        //
+        $livros = Livro::all();
+
+        return view('avaliacoes.create', compact('livros'));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'nota' => 'required|integer|min:1|max:5',
+            'comentario' => 'nullable',
+            'livro_id' => 'required|exists:livros,id'
+        ]);
+
+        Avaliacao::create($request->all());
+
+        return redirect()->route('avaliacoes.index')
+            ->with('success', 'Avaliação criada com sucesso!');
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(Avaliacao $avaliacao)
+    public function show(string $id)
     {
-        //
+        $avaliacao = Avaliacao::with('livro')->findOrFail($id);
+
+        return view('avaliacoes.show', compact('avaliacao'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Avaliacao $avaliacao)
+    public function edit(string $id)
     {
-        //
+        $avaliacao = Avaliacao::findOrFail($id);
+        $livros = Livro::all();
+
+        return view('avaliacoes.edit', compact('avaliacao', 'livros'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, Avaliacao $avaliacao)
+    public function update(Request $request, string $id)
     {
-        //
+        $avaliacao = Avaliacao::findOrFail($id);
+
+        $request->validate([
+            'nota' => 'required|integer|min:1|max:5',
+            'comentario' => 'nullable',
+            'livro_id' => 'required|exists:livros,id'
+        ]);
+
+        $avaliacao->update($request->all());
+
+        return redirect()->route('avaliacoes.index')
+            ->with('success', 'Avaliação atualizada com sucesso!');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(Avaliacao $avaliacao)
+    public function destroy(string $id)
     {
-        //
+        $avaliacao = Avaliacao::findOrFail($id);
+
+        $avaliacao->delete();
+
+        return redirect()->route('avaliacoes.index')
+            ->with('success', 'Avaliação removida!');
     }
 }

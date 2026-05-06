@@ -6,22 +6,22 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-    /**
-     * Run the migrations.
-     */
     public function up(): void
     {
-        Schema::create('sagas', function (Blueprint $table) {
+        Schema::create('avaliacoes', function (Blueprint $table) {
             $table->id();
+
+            $table->integer('nota'); // 1 a 5
+            $table->text('comentario')->nullable();
+
+            $table->foreignId('livro_id')->constrained('livros')->onDelete('cascade');
+
             $table->timestamps();
         });
     }
 
-    /**
-     * Reverse the migrations.
-     */
     public function down(): void
     {
-        Schema::dropIfExists('sagas');
+        Schema::dropIfExists('avaliacoes');
     }
 };

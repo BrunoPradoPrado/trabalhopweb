@@ -19,6 +19,7 @@ return new class extends Migration
             $table->foreignId('autor_id')->constrained('autores');
             $table->foreignId('categoria_id')->constrained('categorias');
             $table->foreignId('editora_id')->constrained('editoras');
+            $table->foreignId('saga_id')->nullable()->constrained('sagas')->nullOnDelete();
 
             $table->timestamps();
         });

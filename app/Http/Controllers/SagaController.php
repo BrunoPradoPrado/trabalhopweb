@@ -7,59 +7,80 @@ use Illuminate\Http\Request;
 
 class SagaController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
-    public function index()
+    public function index(Request $request)
     {
-        //
+        $query = Saga::query();
+
+        if ($request->filled('busca')) {
+            $query->where('nome', 'like', "%{$request->busca}%");
+        }
+
+        $query->orderBy('nome');
+
+        $sagas = $query->get();
+
+        return view('sagas.index', compact('sagas'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
     public function create()
     {
-        //
+        return view('sagas.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'nome' => 'required',
+            'descricao' => 'nullable'
+        ]);
+
+        Saga::create($request->all());
+
+        return redirect()->route('sagas.index')
+            ->with('success', 'Saga criada com sucesso!');
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(Saga $saga)
+    public function show(string $id)
     {
-        //
+        $saga = Saga::with('livros')->findOrFail($id);
+
+        return view('sagas.show', compact('saga'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Saga $saga)
+    public function edit(string $id)
     {
-        //
+        $saga = Saga::findOrFail($id);
+
+        return view('sagas.edit', compact('saga'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, Saga $saga)
+    public function update(Request $request, string $id)
     {
-        //
+        $saga = Saga::findOrFail($id);
+
+        $request->validate([
+            'nome' => 'required',
+            'descricao' => 'nullable'
+        ]);
+
+        $saga->update($request->all());
+
+        return redirect()->route('sagas.index')
+            ->with('success', 'Saga atualizada com sucesso!');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(Saga $saga)
+    public function destroy(string $id)
     {
-        //
+        $saga = Saga::findOrFail($id);
+
+        if ($saga->livros()->count() > 0) {
+            return redirect()->route('sagas.index')
+                ->with('erro', 'Não é possível excluir a saga com livros vinculados.');
+        }
+
+        $saga->delete();
+
+        return redirect()->route('sagas.index')
+            ->with('success', 'Saga removida!');
     }
 }
