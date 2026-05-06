@@ -18,7 +18,13 @@ class EditoraFactory extends Factory
         {
             return [
                 'nome' => fake()->company(),
-                'cidade' => fake()->city(),
+                'cidade' => fake()->randomElement([
+                        'Brasília',
+                        'Rio de Janeiro',
+                        'São Paulo',
+                        'Chapecó',
+                        'Porto Alegre'
+                    ]),
                 'ano_fundacao' => fake()->numberBetween(1900, 2020)
             ];
         }

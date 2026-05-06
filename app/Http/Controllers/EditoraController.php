@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Barryvdh\DomPDF\Facade\Pdf;
+use App\Models\Editora;
+use App\Charts\EditorasChart;
 
 class EditoraController extends Controller
 {
@@ -90,5 +93,34 @@ class EditoraController extends Controller
             $editora->delete();
 
             return redirect()->route('editoras.index');
+        }
+
+    public function report()
+        {
+            $editoras = Editora::all();
+
+            $pdf = Pdf::loadView('editoras.report', [
+                'titulo' => 'Relatório de Editoras',
+                'editoras' => $editoras
+            ]);
+
+            return $pdf->download('editoras.pdf');
+        }
+
+        public function chart(EditorasChart $chart)
+        {
+            $dados = Editora::selectRaw('cidade, COUNT(*) as total')
+                ->groupBy('cidade')
+                ->get();
+
+            $cidades = $dados->pluck('cidade')->toArray();
+            $quantidades = $dados->pluck('total')->toArray();
+
+            $grafico = $chart->build([
+                'cidades' => $cidades,
+                'quantidades' => $quantidades
+            ]);
+
+            return view('editoras.chart', compact('grafico'));
         }
 }

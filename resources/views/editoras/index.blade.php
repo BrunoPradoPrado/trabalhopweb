@@ -12,11 +12,16 @@
 
 <div class="d-flex justify-content-between mb-3">
     <a href="{{ route('editoras.create') }}" class="btn btn-success">+ Nova Editora</a>
+    
+    <div class="d-flex gap-2">
+        <a href="{{ url('editoras/chart') }}" class="btn btn-danger">Gráfico</a>
+        <a href="{{ url('editoras/report') }}" class="btn btn-secondary">Relatório</a>
 
-    <form method="GET" action="{{ route('editoras.index') }}" class="d-flex">
-        <input type="text" name="busca" class="form-control me-2" placeholder="Buscar..." value="{{ request('busca') }}">
-        <button type="submit" class="btn btn-outline-primary">Buscar</button>
-    </form>
+        <form method="GET" action="{{ route('editoras.index') }}" class="d-flex">
+            <input type="text" name="busca" class="form-control me-2" placeholder="Buscar..." value="{{ request('busca') }}">
+            <button type="submit" class="btn btn-outline-primary">Buscar</button>
+        </form>
+    </div>
 </div>
 
 <table class="table table-striped table-hover shadow-sm">

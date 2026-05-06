@@ -4,7 +4,7 @@ namespace App\Charts;
 
 use ArielMejiaDev\LarapexCharts\LarapexChart;
 
-class AutoresChart
+class EditorasChart
 {
     protected $chart;
 
@@ -13,13 +13,13 @@ class AutoresChart
         $this->chart = $chart;
     }
 
-    public function build($dados)
+    public function build($data)
     {
         return $this->chart->barChart()
-            ->setTitle('Autores por Nacionalidade')
+            ->setTitle('Editoras por Cidade')
             ->setSubtitle('Distribuição cadastrada no sistema')
-            ->addData($dados['quantidades'], 'Autores')
-            ->setXAxis($dados['nacionalidades'])
+            ->addData($data['quantidades'], 'Quantidade')
+            ->setXAxis($data['cidades'])
             ->setColors(['#0d6efd', '#198754', '#ffc107', '#dc3545'])
             ->setGrid(true)
             ->setDataLabels(true);
