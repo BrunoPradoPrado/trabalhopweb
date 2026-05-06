@@ -1,66 +1,307 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+vamos lá. 
+create:
+@extends('layout')
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+@section('conteudo')
 
-## About Laravel
+<h1 class="mb-4">Novo Autor</h1>
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+<form action="{{ route('autores.store') }}" method="POST" enctype="multipart/form-data" class="card p-4 shadow-sm">
+    @csrf
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+    <div class="mb-3">
+        <label class="form-label">Nome</label>
+        <input type="text" name="nome" class="form-control" required>
+    </div>
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+    <div class="mb-3">
+        <label class="form-label">Nacionalidade</label>
+        <input type="text" name="nacionalidade" class="form-control" required>
+    </div>
 
-## Learning Laravel
+    <div class="mb-3">
+        <label class="form-label">Imagem</label>
+        <input type="file" name="imagem" class="form-control">
+    </div>
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+    <button type="submit" class="btn btn-success">Salvar</button>
+    <a href="{{ route('autores.index') }}" class="btn btn-secondary">Voltar</a>
+</form>
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+@endsection
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+edit:
+@extends('layout')
 
-## Laravel Sponsors
+@section('conteudo')
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+<h1 class="mb-4">Editar Autor</h1>
 
-### Premium Partners
+<form action="{{ route('autores.update', $autor->id) }}" method="POST" enctype="multipart/form-data" class="card p-4 shadow-sm">
+    @csrf
+    @method('PUT')
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
+    <div class="mb-3">
+        <label class="form-label">Nome</label>
+        <input type="text" name="nome" class="form-control" value="{{ $autor->nome }}" required>
+    </div>
 
-## Contributing
+    <div class="mb-3">
+        <label class="form-label">Nacionalidade</label>
+        <input type="text" name="nacionalidade" class="form-control" value="{{ $autor->nacionalidade }}" required>
+    </div>
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+    <div class="mb-3">
+        <label class="form-label">Imagem atual</label><br>
+        @if($autor->imagem)
+            <img src="{{ asset('storage/' . $autor->imagem) }}" class="img-thumbnail mb-2" width="120">
+        @else
+            <p class="text-muted">Sem imagem</p>
+        @endif
+    </div>
 
-## Code of Conduct
+    <div class="mb-3">
+        <label class="form-label">Nova imagem</label>
+        <input type="file" name="imagem" class="form-control">
+    </div>
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+    <button type="submit" class="btn btn-primary">Atualizar</button>
+    <a href="{{ route('autores.index') }}" class="btn btn-secondary">Voltar</a>
+</form>
 
-## Security Vulnerabilities
+@endsection
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+index:
+@extends('layout')
 
-## License
+@section('conteudo')
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+<h1 class="mb-4">Autores</h1>
+
+@if(session('success'))
+    <div class="alert alert-success">
+        {{ session('success') }}
+    </div>
+@endif
+
+@if(session('erro'))
+    <div class="alert alert-danger">
+        {{ session('erro') }}
+    </div>
+@endif
+
+<div class="d-flex justify-content-between mb-3">
+    <a href="{{ route('autores.create') }}" class="btn btn-success">+ Novo Autor</a>
+
+    <div class="d-flex gap-2">
+        <a href="{{ url('autores/chart') }}" class="btn btn-danger">Gráfico</a>
+        <a href="{{ url('autores/report') }}" class="btn btn-secondary">Relatório</a>
+
+        <form method="GET" action="{{ route('autores.index') }}" class="d-flex">
+            <input type="text" name="busca" class="form-control me-2" placeholder="Buscar..." value="{{ request('busca') }}">
+            <button type="submit" class="btn btn-outline-primary">Buscar</button>
+        </form>
+    </div>
+</div>
+
+<table class="table table-striped table-hover shadow-sm align-middle">
+    <thead class="table-dark">
+        <tr>
+            <th>Imagem</th>
+            <th>Nome</th>
+            <th>Nacionalidade</th>
+            <th>Ações</th>
+        </tr>
+    </thead>
+
+    <tbody>
+    @foreach($autores as $autor)
+        <tr>
+            <td>
+                @if($autor->imagem)
+                    <img src="{{ asset('storage/' . $autor->imagem) }}" class="rounded-circle" width="50" height="50" style="object-fit: cover;">
+                @else
+                    <span class="text-muted">-</span>
+                @endif
+            </td>
+
+            <td>{{ $autor->nome }}</td>
+            <td>{{ $autor->nacionalidade }}</td>
+
+            <td>
+                <a href="{{ route('autores.show', $autor->id) }}" class="btn btn-sm btn-info">Ver</a>
+                <a href="{{ route('autores.edit', $autor->id) }}" class="btn btn-sm btn-warning">Editar</a>
+
+                <form action="{{ route('autores.destroy', $autor->id) }}" method="POST" class="d-inline">
+                    @csrf
+                    @method('DELETE')
+                    <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Tem certeza?')">Excluir</button>
+                </form>
+            </td>
+        </tr>
+    @endforeach
+    </tbody>
+</table>
+
+@endsection
+
+report:
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Relatório de Autores</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            font-size: 12px;
+            color: #333;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .header h2 {
+            margin: 0;
+            font-size: 20px;
+        }
+
+        .header p {
+            margin: 5px 0 0;
+            font-size: 12px;
+            color: #777;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+
+        table th {
+            background: #2c3e50;
+            color: #fff;
+            padding: 8px;
+            text-align: left;
+            font-size: 12px;
+        }
+
+        table td {
+            border: 1px solid #ddd;
+            padding: 8px;
+        }
+
+        table tr:nth-child(even) {
+            background: #f5f5f5;
+        }
+
+        .footer {
+            position: fixed;
+            bottom: 0;
+            text-align: center;
+            font-size: 10px;
+            color: #999;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="header">
+        <h2>{{ $titulo }}</h2>
+        <p>Gerado automaticamente pelo sistema</p>
+    </div>
+
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nome</th>
+                <th>Nacionalidade</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            @foreach ($autores as $autor)
+                <tr>
+                    <td>{{ $autor->id }}</td>
+                    <td>{{ $autor->nome }}</td>
+                    <td>{{ $autor->nacionalidade }}</td>
+                </tr>
+            @endforeach
+        </tbody>
+    </table>
+
+    <div class="footer">
+        Sistema de Livraria - Relatório de Autores
+    </div>
+
+</body>
+</html>
+
+show (opcional):
+@extends('layout')
+
+@section('conteudo')
+
+<div class="card shadow-sm p-4">
+
+    <div class="text-center mb-3">
+        @if($autor->imagem)
+            <img src="{{ asset('storage/' . $autor->imagem) }}" class="rounded-circle shadow" width="150" height="150" style="object-fit: cover;">
+        @else
+            <div class="text-muted">Sem imagem</div>
+        @endif
+    </div>
+
+    <h1 class="text-center">{{ $autor->nome }}</h1>
+
+    <p class="text-center"><strong>Nacionalidade:</strong> {{ $autor->nacionalidade }}</p>
+
+    <hr>
+
+    <h4>Livros</h4>
+
+    @forelse($autor->livros as $livro)
+        <p class="mb-1">📚 {{ $livro->titulo }}</p>
+    @empty
+        <p class="text-muted">Nenhum livro cadastrado</p>
+    @endforelse
+
+    <a href="{{ route('autores.index') }}" class="btn btn-secondary mt-3">Voltar</a>
+
+</div>
+
+@endsection
+
+chart:
+@extends('layout')
+
+@section('conteudo')
+
+<div class="container mt-4 mb-4">
+
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h2 class="fw-bold">📊 Gráfico de Autores</h2>
+
+        <a href="{{ route('autores.index') }}" class="btn btn-secondary">
+            ← Voltar
+        </a>
+    </div>
+
+    <div class="card shadow-lg border-0 rounded-4 p-4">
+        {!! $grafico->container() !!}
+    </div>
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+{{ $grafico->script() }}
+
+@endsection
+
+
+manda completo pra avaliacoes e sagas
