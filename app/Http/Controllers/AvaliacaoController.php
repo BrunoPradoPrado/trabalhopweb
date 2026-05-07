@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Avaliacao;
 use App\Models\Livro;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class AvaliacaoController extends Controller
@@ -18,8 +19,9 @@ class AvaliacaoController extends Controller
     public function create()
     {
         $livros = Livro::all();
+        $usuarios = User::all();
 
-        return view('avaliacoes.create', compact('livros'));
+        return view('avaliacoes.create', compact('livros', 'usuarios'));
     }
 
     public function store(Request $request)
@@ -27,7 +29,11 @@ class AvaliacaoController extends Controller
         $request->validate([
             'nota' => 'required|integer|min:1|max:5',
             'comentario' => 'nullable',
-            'livro_id' => 'required|exists:livros,id'
+            'titulo' => 'nullable',
+            'recomendado' => 'nullable',
+            'origem' => 'nullable',
+            'livro_id' => 'required|exists:livros,id',
+            'usuario_id' => 'required|exists:users,id'
         ]);
 
         Avaliacao::create($request->all());
@@ -47,8 +53,9 @@ class AvaliacaoController extends Controller
     {
         $avaliacao = Avaliacao::findOrFail($id);
         $livros = Livro::all();
+        $usuarios = User::all();
 
-        return view('avaliacoes.edit', compact('avaliacao', 'livros'));
+        return view('avaliacoes.edit', compact('avaliacao', 'livros', 'usuarios'));
     }
 
     public function update(Request $request, string $id)
@@ -58,7 +65,11 @@ class AvaliacaoController extends Controller
         $request->validate([
             'nota' => 'required|integer|min:1|max:5',
             'comentario' => 'nullable',
-            'livro_id' => 'required|exists:livros,id'
+            'titulo' => 'nullable',
+            'recomendado' => 'nullable',
+            'origem' => 'nullable',
+            'livro_id' => 'required|exists:livros,id',
+            'usuario_id' => 'required|exists:users,id'
         ]);
 
         $avaliacao->update($request->all());

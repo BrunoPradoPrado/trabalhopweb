@@ -9,15 +9,13 @@ use Illuminate\Database\Eloquent\Factories\Factory;
  */
 class SagaFactory extends Factory
 {
-    /**
-     * Define the model's default state.
-     *
-     * @return array<string, mixed>
-     */
     public function definition(): array
     {
         return [
-            //
+            'nome' => fake()->unique()->sentence(2),
+            'descricao' => fake()->paragraph(),
+            'quantidade_livros' => fake()->numberBetween(1, 15),
+            'ano_inicio' => fake()->year()
         ];
     }
 }

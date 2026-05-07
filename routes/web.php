@@ -6,6 +6,8 @@ use App\Http\Controllers\CategoriaController;
 use App\Http\Controllers\LivroController;
 use App\Http\Controllers\EditoraController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\SagaController;
+use App\Http\Controllers\AvaliacaoController;
 
 
 
@@ -14,7 +16,10 @@ Route::get('autores/report', [AutorController::class, 'report']);
 Route::get('autores/chart', [AutorController::class, 'chart']);
 Route::get('editoras/report', [EditoraController::class, 'report']);
 Route::get('editoras/chart', [EditoraController::class, 'chart']);
+
 Route::resource('autores', AutorController::class);
 Route::resource('categorias', CategoriaController::class);
 Route::resource('livros', LivroController::class);
 Route::resource('editoras', EditoraController::class);
+Route::resource('sagas', SagaController::class);
+Route::resource('avaliacoes', AvaliacaoController::class);

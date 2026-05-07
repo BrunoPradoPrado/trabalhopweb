@@ -30,8 +30,10 @@ class SagaController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'nome' => 'required',
-            'descricao' => 'nullable'
+            'nome' => 'required|string|max:255',
+            'descricao' => 'nullable|string',
+            'quantidade_livros' => 'nullable|integer|min:0',
+            'ano_inicio' => 'nullable|integer|digits:4|min:1900|max:' . date('Y'),
         ]);
 
         Saga::create($request->all());
@@ -59,8 +61,10 @@ class SagaController extends Controller
         $saga = Saga::findOrFail($id);
 
         $request->validate([
-            'nome' => 'required',
-            'descricao' => 'nullable'
+            'nome' => 'required|string|max:255',
+            'descricao' => 'nullable|string',
+            'quantidade_livros' => 'nullable|integer|min:0',
+            'ano_inicio' => 'nullable|integer|digits:4|min:1900|max:' . date('Y'),
         ]);
 
         $saga->update($request->all());

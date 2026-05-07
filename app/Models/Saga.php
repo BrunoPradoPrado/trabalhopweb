@@ -13,7 +13,9 @@ class Saga extends Model
 
     protected $fillable = [
         'nome',
-        'descricao'
+        'descricao',
+        'quantidade_livros',
+        'ano_inicio'
     ];
 
     public function livros()

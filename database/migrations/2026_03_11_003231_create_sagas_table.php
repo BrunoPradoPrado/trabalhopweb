@@ -12,6 +12,8 @@ return new class extends Migration
             $table->id();
             $table->string('nome');
             $table->text('descricao')->nullable();
+            $table->integer('quantidade_livros')->default(0);
+            $table->year('ano_inicio')->nullable();
             $table->timestamps();
         });
     }

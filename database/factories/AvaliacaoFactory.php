@@ -2,6 +2,8 @@
 
 namespace Database\Factories;
 
+use App\Models\Livro;
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -9,15 +11,15 @@ use Illuminate\Database\Eloquent\Factories\Factory;
  */
 class AvaliacaoFactory extends Factory
 {
-    /**
-     * Define the model's default state.
-     *
-     * @return array<string, mixed>
-     */
     public function definition(): array
     {
         return [
-            //
+            'nota' => fake()->numberBetween(1, 5),
+            'comentario' => fake()->paragraph(),
+            'titulo' => fake()->sentence(3),
+            'recomendado' => fake()->boolean(),
+            'origem' => fake()->randomElement(['Goodreads', 'Skoob', 'Blog', 'Amigo']),
+            'livro_id' => Livro::inRandomOrder()->first()?->id,
         ];
     }
 }

@@ -10,12 +10,12 @@ return new class extends Migration
     {
         Schema::create('avaliacoes', function (Blueprint $table) {
             $table->id();
-
             $table->integer('nota'); // 1 a 5
             $table->text('comentario')->nullable();
-
             $table->foreignId('livro_id')->constrained('livros')->onDelete('cascade');
-
+            $table->string('titulo', 255)->nullable();
+            $table->string('origem', 255)->nullable();
+            $table->boolean('recomendado')->default(false);
             $table->timestamps();
         });
     }

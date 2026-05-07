@@ -14,11 +14,20 @@ class Avaliacao extends Model
     protected $fillable = [
         'nota',
         'comentario',
-        'livro_id'
+        'titulo',
+        'recomendado',
+        'origem',
+        'livro_id',
+        'usuario_id'
     ];
 
     public function livro()
     {
         return $this->belongsTo(\App\Models\Livro::class);
+    }
+
+    public function usuario()
+    {
+        return $this->belongsTo(\App\Models\User::class);
     }
 }

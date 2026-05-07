@@ -21,7 +21,8 @@ class LivroFactory extends Factory
                 'ano' => fake()->numberBetween(1900, 2024),
                 'autor_id' => \App\Models\Autor::inRandomOrder()->first()->id,
                 'categoria_id' => \App\Models\Categoria::inRandomOrder()->first()->id,
-                'editora_id' => \App\Models\Editora::inRandomOrder()->first()->id
+                'editora_id' => \App\Models\Editora::inRandomOrder()->first()->id,
+                'saga_id' => \App\Models\Saga::inRandomOrder()->first()?->id
             ];
         }
 }
