@@ -2,92 +2,78 @@
 
 @section('conteudo')
 
-<h1 class="mb-4">Avaliações</h1>
-
-@if(session('success'))
-    <div class="alert alert-success">
-        {{ session('success') }}
+<div class="d-flex align-items-center justify-content-between mb-4">
+    <div>
+        <h1 class="section-heading">
+            <i class="bi bi-star"></i> Avaliações
+        </h1>
+        <p class="section-sub">Feedback dos leitores</p>
     </div>
-@endif
 
-<div class="d-flex justify-content-between mb-3">
-
-    <a href="{{ route('avaliacoes.create') }}" class="btn btn-success">
-        + Nova Avaliação
+    <a href="{{ route('avaliacoes.create') }}" class="btn-sage">
+        <i class="bi bi-plus-lg"></i> Nova Avaliação
     </a>
-
 </div>
 
-<table class="table table-striped table-hover shadow-sm align-middle">
+<div class="lib-card">
+    <div class="table-responsive">
+        <table class="lib-table">
 
-    <thead class="table-dark">
-        <tr>
-            <th>Livro</th>
-            <th>Nota</th>
-            <th>Título</th>
-            <th>Usuário</th>
-            <th>Origem</th>
-            <th>Recomendado</th>
-            <th>Ações</th>
-        </tr>
-    </thead>
+            <thead>
+                <tr>
+                    <th>Livro</th>
+                    <th>Nota</th>
+                    <th>Título</th>
+                    <th>Origem</th>
+                    <th>Recomendado</th>
+                    <th style="text-align:right;">Ações</th>
+                </tr>
+            </thead>
 
-    <tbody>
+            <tbody>
+                @foreach($avaliacoes as $avaliacao)
+                <tr>
+                    <td>{{ $avaliacao->livro->titulo }}</td>
+                    <td>⭐ {{ $avaliacao->nota }}</td>
+                    <td>{{ $avaliacao->titulo ?? '-' }}</td>
+                    <td>{{ $avaliacao->origem ?? '-' }}</td>
+                    <td>
+                        {{ $avaliacao->recomendado ? 'Sim' : 'Não' }}
+                    </td>
 
-    @foreach($avaliacoes as $avaliacao)
+                    <td>
+                        <div class="d-flex gap-2 justify-content-end">
 
-        <tr>
+                            <a href="{{ route('avaliacoes.show', $avaliacao->id) }}"
+                               class="btn-ghost btn-icon-only">
+                                <i class="bi bi-eye"></i>
+                            </a>
 
-            <td>{{ $avaliacao->livro->titulo }}</td>
+                            <a href="{{ route('avaliacoes.edit', $avaliacao->id) }}"
+                               class="btn-gold btn-icon-only">
+                                <i class="bi bi-pencil"></i>
+                            </a>
 
-            <td>⭐ {{ $avaliacao->nota }}</td>
+                            <form action="{{ route('avaliacoes.destroy', $avaliacao->id) }}"
+                                  method="POST"
+                                  onsubmit="return confirm('Excluir avaliação?')">
+                                @csrf
+                                @method('DELETE')
 
-            <td>{{ $avaliacao->titulo }}</td>
+                                <button class="btn-rust btn-icon-only">
+                                    <i class="bi bi-trash3"></i>
+                                </button>
+                            </form>
 
-            <td>{{ $avaliacao->usuario?->name ?? 'N/A' }}</td>
+                        </div>
+                    </td>
 
-            <td>{{ $avaliacao->origem ?? 'N/A' }}</td>
+                </tr>
+                @endforeach
+            </tbody>
 
-            <td>{{ $avaliacao->recomendado ? '✓ Sim' : '✗ Não' }}</td>
-
-            <td>
-
-                <a href="{{ route('avaliacoes.show', $avaliacao->id) }}"
-                   class="btn btn-sm btn-info">
-
-                    Ver
-                </a>
-
-                <a href="{{ route('avaliacoes.edit', $avaliacao->id) }}"
-                   class="btn btn-sm btn-warning">
-
-                    Editar
-                </a>
-
-                <form action="{{ route('avaliacoes.destroy', $avaliacao->id) }}"
-                      method="POST"
-                      class="d-inline">
-
-                    @csrf
-                    @method('DELETE')
-
-                    <button type="submit"
-                            class="btn btn-sm btn-danger"
-                            onclick="return confirm('Tem certeza?')">
-
-                        Excluir
-                    </button>
-
-                </form>
-
-            </td>
-
-        </tr>
-
-    @endforeach
-
-    </tbody>
-
-</table>
+        </table>
+    </div>
+</div>
 
 @endsection
