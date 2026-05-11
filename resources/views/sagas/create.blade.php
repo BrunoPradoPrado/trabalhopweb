@@ -13,10 +13,10 @@
         <form action="{{ route('sagas.store') }}" method="POST">
             @csrf
             <div class="mb-4"><label class="lib-label">Nome da Saga</label><input type="text" name="nome" class="lib-input" value="{{ old('nome') }}" placeholder="Ex.: O Senhor dos Anéis" required></div>
-            <div class="mb-4"><label class="lib-label">Descrição</label><textarea name="descricao" class="lib-input" rows="3" placeholder="Descreva a saga...">{{ old('descricao') }}</textarea></div>
+            <div class="mb-4"><label class="lib-label">Descrição</label><textarea name="descricao" class="lib-input" rows="3" placeholder="Descreva a saga..." required>{{ old('descricao') }}</textarea></div>
             <div class="form-row">
-                <div class="mb-4"><label class="lib-label">Quantidade de Livros</label><input type="number" name="quantidade_livros" class="lib-input" value="{{ old('quantidade_livros') }}" placeholder="Ex.: 3" min="1"></div>
-                <div class="mb-4"><label class="lib-label">Ano de Início</label><input type="number" name="ano_inicio" class="lib-input" value="{{ old('ano_inicio') }}" placeholder="Ex.: 1954" min="1000" max="{{ date('Y') }}"></div>
+                <div class="mb-4"><label class="lib-label">Quantidade de Livros</label><input type="number" name="quantidade_livros" class="lib-input" value="{{ old('quantidade_livros') }}" placeholder="Ex.: 3" min="1" required></div>
+                <div class="mb-4"><label class="lib-label">Ano de Início</label><input type="number" name="ano_inicio" class="lib-input" value="{{ old('ano_inicio') }}" placeholder="Ex.: 1954" min="1000" max="{{ date('Y') }}" required></div>
             </div>
             <div class="d-flex gap-2">
                 <button type="submit" class="btn-sage"><i class="bi bi-check-lg"></i> Salvar</button>

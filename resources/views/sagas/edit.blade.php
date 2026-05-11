@@ -13,10 +13,10 @@
         <form action="{{ route('sagas.update', $saga->id) }}" method="POST">
             @csrf @method('PUT')
             <div class="mb-4"><label class="lib-label">Nome</label><input type="text" name="nome" class="lib-input" value="{{ old('nome', $saga->nome) }}" required></div>
-            <div class="mb-4"><label class="lib-label">Descrição</label><textarea name="descricao" class="lib-input" rows="3">{{ old('descricao', $saga->descricao) }}</textarea></div>
+            <div class="mb-4"><label class="lib-label">Descrição</label><textarea name="descricao" class="lib-input" rows="3" required>{{ old('descricao', $saga->descricao) }}</textarea></div>
             <div class="form-row">
-                <div class="mb-4"><label class="lib-label">Quantidade de Livros</label><input type="number" name="quantidade_livros" class="lib-input" value="{{ old('quantidade_livros', $saga->quantidade_livros) }}" min="1"></div>
-                <div class="mb-4"><label class="lib-label">Ano de Início</label><input type="number" name="ano_inicio" class="lib-input" value="{{ old('ano_inicio', $saga->ano_inicio) }}" min="1000" max="{{ date('Y') }}"></div>
+                <div class="mb-4"><label class="lib-label">Quantidade de Livros</label><input type="number" name="quantidade_livros" class="lib-input" value="{{ old('quantidade_livros', $saga->quantidade_livros) }}" min="1" required></div>
+                <div class="mb-4"><label class="lib-label">Ano de Início</label><input type="number" name="ano_inicio" class="lib-input" value="{{ old('ano_inicio', $saga->ano_inicio) }}" min="1000" max="{{ date('Y') }}" required></div>
             </div>
             <div class="d-flex gap-2">
                 <button type="submit" class="btn-gold"><i class="bi bi-check-lg"></i> Atualizar</button>

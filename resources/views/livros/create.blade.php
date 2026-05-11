@@ -39,13 +39,13 @@
 
                 <div class="mb-4">
                     <label class="lib-label">Ano de Publicação</label>
-                    <input type="number" name="ano" class="lib-input" value="{{ old('ano') }}" placeholder="Ex.: 1985" min="1000" max="{{ date('Y') }}">
+                    <input type="number" name="ano" class="lib-input" value="{{ old('ano') }}" placeholder="Ex.: 1985" min="1000" max="{{ date('Y') }}" required>
                 </div>
             </div>
 
             <div class="mb-4">
                 <label class="lib-label">Autor</label>
-                <select name="autor_id" class="lib-input">
+                <select name="autor_id" class="lib-input" required>
                     <option value="">— Selecione —</option>
                     @foreach($autores as $autor)
                         <option value="{{ $autor->id }}" {{ old('autor_id') == $autor->id ? 'selected' : '' }}>
@@ -57,7 +57,7 @@
 
             <div class="mb-4">
                 <label class="lib-label">Categoria</label>
-                <select name="categoria_id" class="lib-input">
+                <select name="categoria_id" class="lib-input" required>
                     <option value="">— Selecione —</option>
                     @foreach($categorias as $categoria)
                         <option value="{{ $categoria->id }}" {{ old('categoria_id') == $categoria->id ? 'selected' : '' }}>
@@ -69,7 +69,7 @@
 
             <div class="mb-5">
                 <label class="lib-label">Editora</label>
-                <select name="editora_id" class="lib-input">
+                <select name="editora_id" class="lib-input" required>
                     <option value="">— Selecione —</option>
                     @foreach($editoras as $editora)
                         <option value="{{ $editora->id }}" {{ old('editora_id') == $editora->id ? 'selected' : '' }}>

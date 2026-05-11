@@ -17,8 +17,8 @@
                 <input type="text" name="nome" class="lib-input" value="{{ old('nome', $categoria->nome) }}" required>
             </div>
             <div class="mb-5">
-                <label class="lib-label">Descrição (opcional)</label>
-                <textarea name="descricao" class="lib-input" rows="3">{{ old('descricao', $categoria->descricao) }}</textarea>
+                <label class="lib-label">Descrição</label>
+                <textarea name="descricao" class="lib-input" rows="3" required>{{ old('descricao', $categoria->descricao) }}</textarea>
             </div>
             <div class="d-flex gap-2">
                 <button type="submit" class="btn-gold"><i class="bi bi-check-lg"></i> Atualizar</button>

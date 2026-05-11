@@ -2,7 +2,7 @@
 
 @section('conteudo')
 
-<div class="d-flex align-items-center justify-content-between mb-4">
+<div class="d-flex align-items-center justify-content-between mb-4 flex-wrap gap-3">
     <div>
         <h1 class="section-heading">
             <i class="bi bi-star"></i> Avaliações

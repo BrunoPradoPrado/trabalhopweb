@@ -13,8 +13,8 @@
         <form action="{{ route('editoras.store') }}" method="POST">
             @csrf
             <div class="mb-4"><label class="lib-label">Nome</label><input type="text" name="nome" class="lib-input" value="{{ old('nome') }}" placeholder="Ex.: Companhia das Letras" required></div>
-            <div class="mb-4"><label class="lib-label">Cidade</label><input type="text" name="cidade" class="lib-input" value="{{ old('cidade') }}" placeholder="Ex.: São Paulo"></div>
-            <div class="mb-5"><label class="lib-label">Ano de Fundação</label><input type="number" name="ano_fundacao" class="lib-input" value="{{ old('ano_fundacao') }}" placeholder="Ex.: 1986" min="1000" max="{{ date('Y') }}"></div>
+            <div class="mb-4"><label class="lib-label">Cidade</label><input type="text" name="cidade" class="lib-input" value="{{ old('cidade') }}" placeholder="Ex.: São Paulo" required></div>
+            <div class="mb-5"><label class="lib-label">Ano de Fundação</label><input type="number" name="ano_fundacao" class="lib-input" value="{{ old('ano_fundacao') }}" placeholder="Ex.: 1986" min="1000" max="{{ date('Y') }}" required></div>
             <div class="d-flex gap-2">
                 <button type="submit" class="btn-sage"><i class="bi bi-check-lg"></i> Salvar</button>
                 <a href="{{ route('editoras.index') }}" class="btn-ghost">Cancelar</a>
