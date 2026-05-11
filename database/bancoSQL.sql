@@ -1,10 +1,3 @@
--- --------------------------------------------------------
--- Servidor:                     127.0.0.1
--- Versão do servidor:           8.0.30 - MySQL Community Server - GPL
--- OS do Servidor:               Win64
--- HeidiSQL Versão:              12.1.0.6537
--- --------------------------------------------------------
-
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET NAMES utf8 */;
 /*!50503 SET NAMES utf8mb4 */;
@@ -14,116 +7,287 @@
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
-
--- Copiando estrutura do banco de dados para bancopweb
 CREATE DATABASE IF NOT EXISTS `bancopweb` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
 USE `bancopweb`;
 
--- Copiando estrutura para tabela bancopweb.autores
-CREATE TABLE IF NOT EXISTS `autores` (
-  `id` bigint unsigned NOT NULL AUTO_INCREMENT,
-  `nome` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `nacionalidade` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `imagem` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
--- Copiando dados para a tabela bancopweb.autores: ~4 rows (aproximadamente)
 INSERT IGNORE INTO `autores` (`id`, `nome`, `nacionalidade`, `imagem`, `created_at`, `updated_at`) VALUES
-	(1, 'Prof. Geo Bahringer', 'Sierra Leone', 'autores/default.png', '2026-03-20 22:52:30', '2026-03-20 22:52:30'),
-	(2, 'Nestor Dickinson', 'New Caledonia', 'autores/default.png', '2026-03-20 22:52:30', '2026-03-20 22:52:30'),
-	(3, 'Camron Schulist PhD', 'Netherlands', 'autores/default.png', '2026-03-20 22:52:30', '2026-03-20 22:52:30'),
-	(4, 'Fae Monahan', 'Vietnam', 'autores/default.png', '2026-03-20 22:52:30', '2026-03-20 22:52:30');
+	(1, 'Cruz Hane', 'França', 'autores/default.png', '2026-05-07 04:08:48', '2026-05-07 04:08:48'),
+	(2, 'Lysanne Hammes', 'França', 'autores/default.png', '2026-05-07 04:08:48', '2026-05-07 04:08:48'),
+	(3, 'Dr. Omer Wolf V', 'EUA', 'autores/default.png', '2026-05-07 04:08:48', '2026-05-07 04:08:48'),
+	(4, 'Carmela Crist', 'Alemanha', 'autores/default.png', '2026-05-07 04:08:48', '2026-05-07 04:08:48'),
+	(5, 'Dr. Jonathon Flatley', 'Brasil', 'autores/default.png', '2026-05-07 04:08:48', '2026-05-07 04:08:48'),
+	(6, 'Henriette McGlynn V', 'EUA', 'autores/default.png', '2026-05-07 04:08:48', '2026-05-07 04:08:48'),
+	(7, 'Omer Mueller', 'Brasil', 'autores/default.png', '2026-05-07 04:08:48', '2026-05-07 04:08:48'),
+	(8, 'Dr. Darryl Grady III', 'Alemanha', 'autores/default.png', '2026-05-07 04:08:48', '2026-05-07 04:08:48'),
+	(9, 'Edmond Gislason II', 'Alemanha', 'autores/default.png', '2026-05-07 04:08:48', '2026-05-07 04:08:48'),
+	(10, 'Mrs. Samantha Keebler', 'EUA', 'autores/default.png', '2026-05-07 04:08:48', '2026-05-07 04:08:48'),
+	(11, 'Sophie Friesen', 'Alemanha', 'autores/default.png', '2026-05-07 04:08:48', '2026-05-07 04:08:48'),
+	(12, 'Brendan Ruecker', 'Alemanha', 'autores/default.png', '2026-05-07 04:08:48', '2026-05-07 04:08:48'),
+	(13, 'Myrl Parker', 'França', 'autores/default.png', '2026-05-07 04:08:48', '2026-05-07 04:08:48'),
+	(14, 'Dr. Jaden Mayert Jr.', 'Alemanha', 'autores/default.png', '2026-05-07 04:08:48', '2026-05-07 04:08:48'),
+	(15, 'Charlene Kuvalis', 'EUA', 'autores/default.png', '2026-05-07 04:08:48', '2026-05-07 04:08:48'),
+	(16, 'Dr. Jerald Leannon Sr.', 'França', 'autores/default.png', '2026-05-07 04:08:48', '2026-05-07 04:08:48'),
+	(17, 'Bo Hickle', 'Alemanha', 'autores/default.png', '2026-05-07 04:08:48', '2026-05-07 04:08:48'),
+	(18, 'Orie Huels', 'França', 'autores/default.png', '2026-05-07 04:08:48', '2026-05-07 04:08:48'),
+	(19, 'Prof. Rodger Osinski III', 'França', 'autores/default.png', '2026-05-07 04:08:48', '2026-05-07 04:08:48'),
+	(20, 'Patsy Denesik DVM', 'Brasil', 'autores/default.png', '2026-05-07 04:08:48', '2026-05-07 04:08:48'),
+	(21, 'Mr. Camron Denesik II', 'Brasil', 'autores/default.png', '2026-05-07 04:08:48', '2026-05-07 04:08:48'),
+	(22, 'Uriah VonRueden', 'EUA', 'autores/default.png', '2026-05-07 04:08:48', '2026-05-07 04:08:48'),
+	(23, 'Emelia Lynch', 'França', 'autores/default.png', '2026-05-07 04:08:48', '2026-05-07 04:08:48'),
+	(24, 'Ms. Era Keeling III', 'Alemanha', 'autores/default.png', '2026-05-07 04:08:48', '2026-05-07 04:08:48'),
+	(25, 'Johnnie Wiza', 'EUA', 'autores/default.png', '2026-05-07 04:08:48', '2026-05-07 04:08:48');
 
--- Copiando estrutura para tabela bancopweb.categorias
-CREATE TABLE IF NOT EXISTS `categorias` (
-  `id` bigint unsigned NOT NULL AUTO_INCREMENT,
-  `nome` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `descricao` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+INSERT IGNORE INTO `avaliacoes` (`id`, `nota`, `comentario`, `livro_id`, `titulo`, `origem`, `recomendado`, `created_at`, `updated_at`) VALUES
+	(1, 2, 'Rerum aut inventore saepe molestiae placeat velit. Repellendus pariatur consequatur iure sit voluptas.', 59, 'Quae laborum commodi sequi.', 'Goodreads', 0, '2026-05-07 04:08:50', '2026-05-07 04:08:50'),
+	(2, 3, 'Labore consequuntur rerum id consequatur quas repellat dolorum. Veniam et assumenda amet. Nulla magnam tempore placeat. Voluptatibus aspernatur consequatur sunt magnam.', 86, 'Totam dolorum amet.', 'Amigo', 1, '2026-05-07 04:08:50', '2026-05-07 04:08:50'),
+	(3, 4, 'Non quis consequatur ut dolore. Qui aperiam repudiandae nobis dolorum officia sit doloremque. Omnis voluptate necessitatibus maiores voluptas error vitae provident. Quia consequatur voluptates quaerat dolores. Ad ut omnis deleniti quasi molestias sed ab.', 65, 'Voluptas est eius.', 'Goodreads', 0, '2026-05-07 04:08:50', '2026-05-07 04:08:50'),
+	(4, 1, 'Quia cum consequatur at possimus repudiandae. Quo laborum facilis necessitatibus blanditiis laboriosam nihil. Rerum suscipit optio et rem sed quo. Veniam dolor praesentium velit incidunt consequuntur.', 85, 'Enim ad molestias pariatur voluptates.', 'Skoob', 1, '2026-05-07 04:08:50', '2026-05-07 04:08:50'),
+	(5, 1, 'Sequi sint ad est nihil beatae ducimus voluptatem. Earum illo consectetur perferendis impedit laborum voluptates. Consequuntur autem eum velit soluta laboriosam distinctio. Quis est tempore quidem.', 29, 'Maxime sit illo.', 'Goodreads', 0, '2026-05-07 04:08:50', '2026-05-07 04:08:50'),
+	(6, 1, 'Dignissimos non officia aut recusandae. Ipsam recusandae nesciunt eligendi dolores itaque esse.', 13, 'Ab dolor veritatis.', 'Skoob', 0, '2026-05-07 04:08:50', '2026-05-07 04:08:50'),
+	(7, 1, 'Iusto eveniet vero provident quia. Provident quo possimus est veritatis suscipit expedita quae. Fugit inventore possimus enim aut. Voluptas consequatur qui et adipisci corrupti iste.', 79, 'Numquam illo dolores beatae.', 'Goodreads', 1, '2026-05-07 04:08:50', '2026-05-07 04:08:50'),
+	(8, 3, 'Amet doloremque facilis eligendi quia repellat aut quia. Pariatur fugiat quas debitis molestias facere. Laborum at dolorem odio libero quidem. Iure tenetur hic omnis nobis dignissimos magnam.', 22, 'Molestiae nemo dolor.', 'Blog', 1, '2026-05-07 04:08:50', '2026-05-07 04:08:50'),
+	(9, 5, 'Id et optio ut voluptate voluptates. Ut temporibus quod sed totam ut nam. Itaque excepturi et tempore aliquam quia consequuntur explicabo.', 16, 'Ipsum voluptatem ut necessitatibus.', 'Amigo', 0, '2026-05-07 04:08:50', '2026-05-07 04:08:50'),
+	(10, 2, 'Fuga ullam non exercitationem qui delectus voluptas. Quia voluptate alias harum delectus. Corrupti fuga illum soluta omnis. Odit occaecati quam praesentium qui eligendi consequatur ullam nemo.', 63, 'Nesciunt totam fugit aperiam.', 'Blog', 1, '2026-05-07 04:08:50', '2026-05-07 04:08:50'),
+	(11, 5, 'Et nihil ipsam et quia quia. Quibusdam officia accusamus rerum labore saepe. Explicabo quam sed maiores consectetur.', 27, 'Beatae qui assumenda.', 'Skoob', 0, '2026-05-07 04:08:50', '2026-05-07 04:08:50'),
+	(12, 5, 'Enim placeat laborum omnis quaerat deserunt. Blanditiis consequatur occaecati minima dolorem ex. Aut repellendus nobis nihil suscipit distinctio quo fugit.', 64, 'Itaque ex tempore nulla a.', 'Skoob', 1, '2026-05-07 04:08:50', '2026-05-07 04:08:50'),
+	(13, 5, 'Fugiat voluptate architecto aut sit provident eos at ut. Eveniet magnam dignissimos optio eaque nulla maxime. Quis quis maiores non similique.', 76, 'Ab similique.', 'Blog', 0, '2026-05-07 04:08:50', '2026-05-07 04:08:50'),
+	(14, 1, 'Vero illum qui blanditiis fuga sit. Laudantium ea officia aut quo omnis aperiam est. Enim amet quos adipisci officia eius doloremque temporibus.', 34, 'Nulla blanditiis aut.', 'Amigo', 0, '2026-05-07 04:08:50', '2026-05-07 04:08:50'),
+	(15, 4, 'Qui et inventore sed quia quia aut. Et est veritatis quia sint. Porro ducimus vel omnis in illum similique nobis. Quisquam qui quis aliquid suscipit dolore architecto.', 16, 'Voluptatem sed dolore.', 'Goodreads', 0, '2026-05-07 04:08:50', '2026-05-07 04:08:50'),
+	(16, 2, 'Facilis quia vitae iure dolorem quia repellendus. Animi voluptatem consequuntur et quaerat ratione. Officiis est veritatis culpa quaerat sapiente officiis eos voluptatem. Quas illum et distinctio qui nihil.', 31, 'Ut quia et.', 'Goodreads', 1, '2026-05-07 04:08:50', '2026-05-07 04:08:50'),
+	(17, 2, 'Fugit ut facilis minima suscipit exercitationem facere minima. Aut debitis odit ut tenetur nemo et nulla. Occaecati atque quisquam vel inventore et. Dolores modi nam totam nobis laborum.', 89, 'Voluptate porro iusto.', 'Skoob', 1, '2026-05-07 04:08:50', '2026-05-07 04:08:50'),
+	(18, 2, 'Dolorem quam ea quod quia amet sunt dolore. Aut recusandae qui laudantium porro.', 25, 'Et voluptates.', 'Amigo', 0, '2026-05-07 04:08:50', '2026-05-07 04:08:50'),
+	(19, 1, 'Numquam eum provident eum fuga. Tempore sint error consequuntur voluptatum quisquam pariatur. Autem aut voluptatibus aut in corporis. Natus fuga laborum nesciunt sed. Earum et debitis aut earum ullam.', 60, 'Consequatur voluptatem quam accusamus.', 'Skoob', 0, '2026-05-07 04:08:50', '2026-05-07 04:08:50'),
+	(20, 5, 'Ut perspiciatis quae cum nam et distinctio nostrum. Ut error ut maxime quidem eos voluptates corrupti. Beatae quae laborum modi quaerat reprehenderit et.', 49, 'Velit aut.', 'Skoob', 0, '2026-05-07 04:08:50', '2026-05-07 04:08:50'),
+	(21, 5, 'Nesciunt odit aspernatur eos deserunt reiciendis praesentium quibusdam. Possimus quasi debitis reprehenderit cumque quasi. Voluptas asperiores nihil porro laborum sint est eaque ad. Voluptate necessitatibus magnam doloribus dolorem.', 26, 'Eveniet quam in.', 'Goodreads', 0, '2026-05-07 04:08:50', '2026-05-07 04:08:50'),
+	(22, 1, 'Et est exercitationem rerum quis ipsa. Eaque quia quisquam qui sed voluptates nostrum quia. Voluptas laudantium voluptates rem rerum. Odio ex tempore et alias et perspiciatis dolor.', 27, 'Quia in officiis.', 'Amigo', 1, '2026-05-07 04:08:50', '2026-05-07 04:08:50'),
+	(23, 2, 'Impedit et esse omnis fuga. Ratione doloribus id quo possimus quis dolor ut.', 31, 'Provident fugit voluptatum omnis fuga.', 'Blog', 0, '2026-05-07 04:08:50', '2026-05-07 04:08:50'),
+	(24, 4, 'Animi ut rerum eveniet qui commodi aspernatur. Ut vero ipsa qui non aperiam voluptas quasi. Dolorem soluta ullam repellendus dicta. Labore consequatur repellendus commodi autem harum officia.', 76, 'Aliquam rerum.', 'Skoob', 1, '2026-05-07 04:08:50', '2026-05-07 04:08:50'),
+	(25, 5, 'Ea et rerum nobis dolores eaque. Quo quia sit tempora rerum animi illo in. Amet odit doloribus et iste.', 52, 'Omnis hic dolore.', 'Amigo', 0, '2026-05-07 04:08:50', '2026-05-07 04:08:50'),
+	(26, 4, 'Sed tenetur sint doloremque. Incidunt sed possimus magni culpa id. Unde error omnis nam quia accusamus omnis et.', 76, 'Perspiciatis libero quasi repellendus.', 'Blog', 0, '2026-05-07 04:08:50', '2026-05-07 04:08:50'),
+	(27, 5, 'Voluptate assumenda consequatur nobis. Ut id et dolorem laboriosam accusamus. Facere necessitatibus eos nihil officiis rerum.', 88, 'Dolorem aut sint.', 'Blog', 1, '2026-05-07 04:08:50', '2026-05-07 04:08:50'),
+	(28, 3, 'Magnam aperiam vel sunt error ipsa laborum dolorum. Harum quo qui consequatur quisquam. Inventore fugiat molestias et harum rerum qui et. Repudiandae dolore animi repellat dolorum error.', 9, 'Cumque excepturi rerum incidunt.', 'Skoob', 1, '2026-05-07 04:08:50', '2026-05-07 04:08:50'),
+	(29, 2, 'Quis saepe nam possimus labore accusantium. Doloribus in voluptates illo non exercitationem eum non qui. Error quod quia ab blanditiis magnam ratione expedita. Totam totam officia et hic. Iste ex repellendus necessitatibus veniam soluta qui.', 4, 'Sed non ad.', 'Goodreads', 1, '2026-05-07 04:08:50', '2026-05-07 04:08:50'),
+	(30, 1, 'Minima quis velit sed ut sunt tenetur et. Non occaecati animi ipsam vero. Tempora fuga voluptatibus illum ut fugiat et.', 1, 'Explicabo maxime exercitationem esse non.', 'Skoob', 1, '2026-05-07 04:08:50', '2026-05-07 04:08:50'),
+	(31, 1, 'Et accusantium cupiditate voluptatem nostrum. Dignissimos praesentium quae pariatur praesentium dolores consequatur ratione. Quia consectetur non nisi ratione quos. Reprehenderit error cumque illo.', 44, 'Cumque eos laborum.', 'Goodreads', 1, '2026-05-07 04:08:50', '2026-05-07 04:08:50'),
+	(32, 3, 'Expedita quo aut cupiditate quam unde qui. Nobis libero et a facere quidem voluptas consequuntur voluptatem. Nihil consequatur soluta tempore officiis ut adipisci. Neque voluptatum vero ut odio nostrum pariatur dolores.', 56, 'Non quasi nulla.', 'Blog', 0, '2026-05-07 04:08:50', '2026-05-07 04:08:50'),
+	(33, 3, 'Et itaque nesciunt et. Adipisci in quam et ab quis delectus. Quia distinctio consequatur ut hic enim est. Quis autem veritatis et eos doloribus consequatur exercitationem est. Nemo fugit consequuntur est nostrum voluptatibus.', 7, 'Aut aliquid soluta.', 'Goodreads', 0, '2026-05-07 04:08:50', '2026-05-07 04:08:50'),
+	(34, 1, 'Eveniet aut optio sit porro incidunt velit fuga voluptates. Voluptas natus porro magni sit voluptatem perferendis alias temporibus. Qui velit deleniti laborum qui omnis aspernatur.', 10, 'Nisi consectetur natus fugit id.', 'Goodreads', 1, '2026-05-07 04:08:50', '2026-05-07 04:08:50'),
+	(35, 3, 'Inventore incidunt voluptas natus delectus veritatis dolores. Aperiam perferendis quo occaecati. Earum numquam laboriosam nisi eaque iste. Sint quo eligendi placeat maxime ea quaerat. Omnis quidem vel dolorem ullam deleniti reprehenderit.', 57, 'Minus nulla placeat tempore.', 'Blog', 1, '2026-05-07 04:08:50', '2026-05-07 04:08:50'),
+	(36, 3, 'Unde et voluptatem est sed enim velit. Doloribus adipisci nisi quia laboriosam dolore.', 24, 'Et vel aut possimus.', 'Amigo', 1, '2026-05-07 04:08:50', '2026-05-07 04:08:50'),
+	(37, 1, 'Molestias sapiente unde et. Ipsa a hic in. Voluptates aperiam cum ad temporibus nemo atque. Dolores vitae voluptate odit nulla impedit.', 80, 'Ut molestiae accusantium ab.', 'Blog', 0, '2026-05-07 04:08:50', '2026-05-07 04:08:50'),
+	(38, 4, 'Ea exercitationem maxime voluptatem quisquam doloribus totam voluptatum. Qui molestiae fugiat voluptas praesentium. Iure voluptate harum minima quia harum id. Doloribus non tempore itaque in aut molestias.', 68, 'Provident sed fugiat sit.', 'Amigo', 0, '2026-05-07 04:08:50', '2026-05-07 04:08:50'),
+	(39, 4, 'Qui accusamus nesciunt aut aut maiores quasi at. Cum aperiam qui quasi illo. Nisi autem dolor corporis autem quaerat expedita provident sed. Consequuntur itaque enim eveniet odio totam quidem in officia.', 19, 'Voluptas libero ex.', 'Skoob', 1, '2026-05-07 04:08:50', '2026-05-07 04:08:50'),
+	(40, 2, 'Dolorem sunt laboriosam eius quia dolor in id quod. Nihil ea autem odio veniam laborum inventore tempora. Ex aut temporibus dolore unde ut. Eos distinctio et et.', 57, 'Maxime quis corrupti quas.', 'Blog', 1, '2026-05-07 04:08:50', '2026-05-07 04:08:50'),
+	(41, 1, 'Enim rem cum quod facilis. Error dicta soluta eveniet. Necessitatibus occaecati ut repudiandae ad.', 70, 'Explicabo exercitationem et.', 'Blog', 0, '2026-05-07 04:08:50', '2026-05-07 04:08:50'),
+	(42, 5, 'Perferendis omnis architecto aut eum eos non. Laudantium fugiat quidem et. In itaque repellat magnam.', 83, 'Enim sed eligendi qui.', 'Skoob', 1, '2026-05-07 04:08:50', '2026-05-07 04:08:50'),
+	(43, 4, 'Voluptatem atque nulla iure dolorum sit nemo rerum. Numquam ut consequatur ex labore.', 63, 'Cum consectetur est quaerat.', 'Skoob', 0, '2026-05-07 04:08:50', '2026-05-07 04:08:50'),
+	(44, 3, 'Ipsum quis ut et. Ut qui voluptas ipsa vel. Dolor et quas et modi libero nobis veritatis rerum. Beatae non ut consequuntur id expedita praesentium eos. Minima illum et quidem at.', 52, 'Illum dicta.', 'Blog', 1, '2026-05-07 04:08:50', '2026-05-07 04:08:50'),
+	(45, 4, 'Sapiente maiores a excepturi vel modi. Expedita reprehenderit libero quo. Ut nam praesentium veniam expedita. Et autem aliquam nulla.', 75, 'Ducimus quae voluptatem error.', 'Blog', 0, '2026-05-07 04:08:50', '2026-05-07 04:08:50'),
+	(46, 5, 'Vitae eligendi amet mollitia. Error et sit sed ut facere dolorem blanditiis. Culpa doloremque rem itaque pariatur. Rerum dolores numquam tempora sit minus.', 95, 'Non saepe.', 'Blog', 1, '2026-05-07 04:08:50', '2026-05-07 04:08:50'),
+	(47, 1, 'Aut architecto labore rem impedit. Eos atque aut harum at. Aut exercitationem fugiat aliquam dolor itaque. Est minima quidem quia earum sit.', 41, 'A quo.', 'Amigo', 1, '2026-05-07 04:08:50', '2026-05-07 04:08:50'),
+	(48, 4, 'Quas ipsa aut et quos dolor inventore unde. Tempore veniam id deleniti quisquam et. Suscipit molestias natus ipsum quos quae sunt.', 14, 'Rem possimus nulla aspernatur.', 'Amigo', 1, '2026-05-07 04:08:50', '2026-05-07 04:08:50'),
+	(49, 3, 'Quia voluptas consequatur explicabo tempore perferendis sit. Magnam ipsa aliquid et. Modi nam ea dolores maxime ut. Consequuntur tempore rerum accusantium occaecati.', 65, 'Dolorem aut et.', 'Amigo', 0, '2026-05-07 04:08:50', '2026-05-07 04:08:50'),
+	(50, 4, 'At atque quae consequuntur perspiciatis. Quae quaerat corrupti quo veritatis dolorum praesentium enim. Qui sed consequatur officiis odio.', 37, 'Sit atque eos molestiae.', 'Amigo', 1, '2026-05-07 04:08:50', '2026-05-07 04:08:50'),
+	(51, 4, 'Autem ea voluptatem est pariatur veritatis. Atque illum ipsum ut. Rerum et ullam magni earum.', 84, 'Dignissimos eum est eaque.', 'Skoob', 1, '2026-05-07 04:08:50', '2026-05-07 04:08:50'),
+	(52, 1, 'Placeat voluptas iste mollitia nesciunt autem voluptas. Quo est illum illum impedit nulla autem voluptatem. Libero similique quia quos tempora dolore architecto illo. Voluptatem quia quis voluptatem ut repellendus dolores at.', 46, 'Culpa ea quae.', 'Amigo', 0, '2026-05-07 04:08:50', '2026-05-07 04:08:50'),
+	(53, 1, 'Et et voluptatibus unde voluptatem aliquam nihil. Quae voluptates qui sed. Earum perferendis non ab dolorem provident et est. Accusamus voluptates eaque placeat magnam similique iusto nesciunt optio.', 73, 'Modi veniam vitae.', 'Skoob', 1, '2026-05-07 04:08:50', '2026-05-07 04:08:50'),
+	(54, 2, 'In laborum ab repudiandae aut assumenda mollitia vel. Eos qui tenetur nulla magnam rem. Sit inventore ea maxime ut et repudiandae.', 89, 'Eum adipisci.', 'Goodreads', 0, '2026-05-07 04:08:50', '2026-05-07 04:08:50'),
+	(55, 1, 'Rerum occaecati et id ab explicabo corporis blanditiis. In vitae officia quidem rem in officiis qui. Distinctio occaecati dolore molestiae ea ipsa explicabo in.', 65, 'Provident qui ipsum veritatis.', 'Goodreads', 1, '2026-05-07 04:08:50', '2026-05-07 04:08:50'),
+	(56, 5, 'Ipsum dicta aut et officiis praesentium. Illo voluptatibus modi voluptas voluptatem eos ad fuga. Incidunt facere quasi quia cumque quaerat praesentium voluptatem provident.', 5, 'Enim aut quisquam.', 'Blog', 0, '2026-05-07 04:08:50', '2026-05-07 04:08:50'),
+	(57, 3, 'Dicta ut sed delectus ipsa non explicabo libero. Eaque dolorem saepe quos saepe ea repudiandae. Veniam excepturi ipsam praesentium et et. Labore debitis ducimus minima neque.', 56, 'Pariatur nihil dolorem neque.', 'Skoob', 1, '2026-05-07 04:08:50', '2026-05-07 04:08:50'),
+	(58, 3, 'Dolorem porro minima nihil quaerat dolore non. Sit sed aliquam a ut. Est et sint ut aut. Et eum magnam et.', 83, 'Velit quia maiores totam.', 'Goodreads', 1, '2026-05-07 04:08:50', '2026-05-07 04:08:50'),
+	(59, 5, 'Beatae animi ab id. Dolores facere sed assumenda reiciendis corporis sint deleniti est. Itaque fuga nisi omnis rerum. Totam at magni incidunt sint eligendi.', 53, 'Mollitia aut fugiat consequatur.', 'Skoob', 1, '2026-05-07 04:08:50', '2026-05-07 04:08:50'),
+	(60, 1, 'Voluptas et rerum labore molestiae consequatur dolores dicta. Eum et tempore rerum laboriosam. Enim sapiente maiores non fugit omnis odit corporis ex.', 8, 'Doloremque nisi autem voluptas id.', 'Skoob', 0, '2026-05-07 04:08:50', '2026-05-07 04:08:50'),
+	(61, 1, 'Qui qui qui quo molestias. Dolores neque quia perspiciatis explicabo molestiae. Nihil qui tempore in quos.', 6, 'Qui vel qui et.', 'Amigo', 1, '2026-05-07 04:08:50', '2026-05-07 04:08:50'),
+	(62, 2, 'Ad et possimus in similique totam consequatur. Sunt sint inventore magni maiores enim et ipsa. Ut et iste sit ut.', 36, 'Soluta id.', 'Goodreads', 0, '2026-05-07 04:08:50', '2026-05-07 04:08:50'),
+	(63, 3, 'Blanditiis consequatur a quae neque id. Quo blanditiis nisi dolorem nisi recusandae.', 35, 'Aut blanditiis distinctio.', 'Goodreads', 0, '2026-05-07 04:08:50', '2026-05-07 04:08:50'),
+	(64, 3, 'Odit veritatis aliquid id deleniti vero. Quibusdam minus fugiat ut aperiam. Voluptatum quisquam laboriosam sint id.', 31, 'Excepturi pariatur voluptatem eligendi.', 'Amigo', 0, '2026-05-07 04:08:50', '2026-05-07 04:08:50'),
+	(65, 2, 'Corrupti fugit maiores nostrum aut. Excepturi sit ea sint deleniti temporibus. Nesciunt similique molestias sed rerum.', 54, 'Dolorem ea possimus.', 'Goodreads', 1, '2026-05-07 04:08:50', '2026-05-07 04:08:50'),
+	(66, 1, 'Sint est inventore quos et soluta. Et sint est explicabo quod eos atque sint quae. Et est at reiciendis eum suscipit sed. Sunt id dolorum neque omnis alias. Deleniti ducimus rem labore est laborum repudiandae.', 82, 'Dolorum nobis et debitis.', 'Amigo', 0, '2026-05-07 04:08:50', '2026-05-07 04:08:50'),
+	(67, 4, 'Rerum recusandae dignissimos aliquid sed laudantium. Quibusdam quas sed voluptatem rerum. Sit quibusdam excepturi provident et.', 16, 'Ipsam sapiente at quisquam.', 'Goodreads', 0, '2026-05-07 04:08:50', '2026-05-07 04:08:50'),
+	(68, 1, 'Voluptatum sint similique error nisi qui. Ut dicta explicabo nostrum vel. Eos cum id error aspernatur velit aliquid.', 35, 'Quidem natus.', 'Skoob', 1, '2026-05-07 04:08:50', '2026-05-07 04:08:50'),
+	(69, 3, 'Voluptatem temporibus saepe aut excepturi. Repellat expedita ducimus illo sed odit sint officiis. Et eos est sit tenetur.', 23, 'Dolor qui exercitationem voluptas.', 'Goodreads', 0, '2026-05-07 04:08:50', '2026-05-07 04:08:50'),
+	(70, 2, 'Quam ut et ullam. Enim autem ipsa porro totam.', 23, 'Quas unde.', 'Amigo', 1, '2026-05-07 04:08:50', '2026-05-07 04:08:50'),
+	(71, 5, 'Dignissimos debitis eos iusto nobis. Ullam est consectetur neque molestiae aut illo possimus. Laudantium est impedit et in tempora hic autem. Vel fugiat aperiam et non nemo tempora porro quis.', 5, 'Impedit necessitatibus a non.', 'Amigo', 0, '2026-05-07 04:08:50', '2026-05-07 04:08:50'),
+	(72, 4, 'Praesentium maxime dolore amet. Maxime sed consectetur iusto et ea dolores repellat. Reiciendis ut inventore porro sit magnam quis. Cumque nulla quaerat sunt quam reprehenderit aspernatur illo incidunt. Ducimus cumque voluptate nihil quis delectus aut est.', 61, 'Alias doloremque numquam.', 'Skoob', 1, '2026-05-07 04:08:50', '2026-05-07 04:08:50'),
+	(73, 3, 'Est corporis porro quidem autem velit laboriosam. Eum sunt et facilis qui. Dolorem autem sed consectetur sit porro eos blanditiis nam.', 83, 'Perspiciatis dolorem sed maiores.', 'Amigo', 1, '2026-05-07 04:08:50', '2026-05-07 04:08:50'),
+	(74, 5, 'Eos voluptatem similique sed dolorem. Ea eligendi assumenda autem dignissimos tempora illum consequatur eum. Aut accusamus repudiandae ducimus qui.', 74, 'Voluptas illum saepe.', 'Skoob', 1, '2026-05-07 04:08:50', '2026-05-07 04:08:50'),
+	(75, 5, 'Ut ut quia voluptate ipsum. Aut non eos nihil debitis. Fugit placeat alias deleniti sapiente voluptates quia consequatur.', 9, 'Doloribus sit nobis id.', 'Amigo', 1, '2026-05-07 04:08:50', '2026-05-07 04:08:50'),
+	(76, 3, 'Accusantium facilis totam qui. Qui veritatis blanditiis recusandae est. Nostrum fuga eos nisi quaerat porro modi.', 78, 'Est quos ut laborum vel.', 'Goodreads', 0, '2026-05-07 04:08:50', '2026-05-07 04:08:50'),
+	(77, 5, 'Ratione fugit qui consequatur facilis voluptatem doloremque et. Magnam aliquam consequatur expedita. Qui qui rem reiciendis nam explicabo voluptatem mollitia perferendis. Tenetur ipsum adipisci voluptatem porro.', 94, 'Sapiente est assumenda.', 'Skoob', 0, '2026-05-07 04:08:50', '2026-05-07 04:08:50'),
+	(78, 1, 'Blanditiis non id ipsum quis voluptatem enim cupiditate. Perspiciatis qui adipisci ipsam quia. Odit rerum asperiores enim rem hic laborum.', 48, 'Perspiciatis minima voluptas deserunt est.', 'Amigo', 1, '2026-05-07 04:08:50', '2026-05-07 04:08:50'),
+	(79, 4, 'Recusandae sed asperiores itaque commodi dolores suscipit voluptatem. Asperiores at voluptates iusto odit nam illum omnis ut. Impedit optio quaerat numquam labore ut ipsam.', 54, 'Dicta ut ratione magni.', 'Amigo', 0, '2026-05-07 04:08:50', '2026-05-07 04:08:50'),
+	(80, 3, 'Consequuntur id sint qui quidem omnis quo nobis. Deserunt saepe facere est quia est. Dicta amet ducimus et est nesciunt fuga sunt. Eos voluptas cupiditate et voluptatem quis.', 90, 'Iusto cumque qui quidem totam.', 'Goodreads', 1, '2026-05-07 04:08:50', '2026-05-07 04:08:50'),
+	(81, 3, 'Et dolor recusandae aut inventore repudiandae. Quibusdam possimus vitae rem rerum sint et. Qui dolor earum neque eaque error qui. Accusamus provident consequatur sit itaque qui nesciunt.', 68, 'Laudantium voluptas nostrum ducimus.', 'Amigo', 0, '2026-05-07 04:08:50', '2026-05-07 04:08:50'),
+	(82, 4, 'Eum iusto non doloribus corporis vel commodi minima a. Ut est itaque veritatis magnam. Qui saepe voluptates doloribus. Repudiandae ratione sed sint nihil ut.', 95, 'Quis fugiat est.', 'Skoob', 0, '2026-05-07 04:08:50', '2026-05-07 04:08:50'),
+	(83, 4, 'Voluptatum perferendis tempore alias adipisci. Animi sapiente possimus voluptatem et fugiat earum sed. Molestiae necessitatibus qui necessitatibus.', 25, 'Esse dolor corporis voluptatem.', 'Goodreads', 1, '2026-05-07 04:08:50', '2026-05-07 04:08:50'),
+	(84, 3, 'Qui possimus molestiae dolores omnis magni. Veritatis optio saepe et aliquid sit et qui. Ipsam iste quod adipisci nostrum assumenda. Assumenda occaecati quis labore quia nostrum.', 14, 'Necessitatibus consequatur labore.', 'Blog', 1, '2026-05-07 04:08:50', '2026-05-07 04:08:50'),
+	(85, 1, 'Molestias sit hic aut sunt libero est ipsa. Id sed provident ipsa unde.', 70, 'Fugit reprehenderit quis.', 'Goodreads', 0, '2026-05-07 04:08:50', '2026-05-07 04:08:50'),
+	(86, 5, 'Et eveniet est nihil et omnis inventore. Autem eius ullam ipsa voluptatibus explicabo officiis accusantium. Sint expedita dolores vero sed animi.', 48, 'Cupiditate provident deserunt.', 'Goodreads', 1, '2026-05-07 04:08:50', '2026-05-07 04:08:50'),
+	(87, 4, 'Error dignissimos non sapiente incidunt libero recusandae. Rerum enim repellat voluptatem esse et rerum. Quia facilis id ea officia omnis. Quibusdam a ea voluptas non totam et aliquam.', 29, 'Et consequatur ipsam.', 'Amigo', 1, '2026-05-07 04:08:50', '2026-05-07 04:08:50'),
+	(88, 2, 'Dolor deserunt dolore voluptatem est similique ut voluptas. Rerum voluptatum aliquam quia provident omnis tempore. Officiis voluptatem dolorem maiores dolorum. Ea consequatur maiores minus enim deleniti id.', 91, 'Molestias accusantium delectus quibusdam.', 'Amigo', 0, '2026-05-07 04:08:50', '2026-05-07 04:08:50'),
+	(89, 5, 'Et fugiat architecto autem. Debitis eos sed in quas nesciunt magnam quis. Quia vitae provident quibusdam corrupti. Non odio totam eos dolore praesentium eum voluptates.', 90, 'Tempore quod sunt.', 'Blog', 0, '2026-05-07 04:08:50', '2026-05-07 04:08:50'),
+	(90, 5, 'Et voluptas qui perspiciatis. Expedita numquam ea similique repellendus cum qui animi recusandae. Mollitia dolor libero rerum. Dolorem quasi rerum et consequatur tempore.', 64, 'Alias tempore in dolorum.', 'Amigo', 0, '2026-05-07 04:08:50', '2026-05-07 04:08:50'),
+	(91, 3, 'Beatae excepturi ad vel at et harum corrupti. Esse voluptas qui autem veritatis quo et. Facilis quod quae cum eum ut rerum tempore. Et et dolorem est ut sed dolor.', 83, 'Nisi sunt ut.', 'Blog', 0, '2026-05-07 04:08:50', '2026-05-07 04:08:50'),
+	(92, 4, 'Rerum deserunt pariatur cupiditate aut officiis nihil. Quam quibusdam excepturi repudiandae accusantium. Eum dicta non voluptate et impedit. Rem similique quas ut enim deserunt quasi fugit necessitatibus.', 52, 'Consequatur eveniet explicabo qui.', 'Skoob', 0, '2026-05-07 04:08:50', '2026-05-07 04:08:50'),
+	(93, 3, 'Ipsam omnis ea autem et suscipit maxime itaque. Aliquam accusantium facere non. Numquam ratione quibusdam ea unde et at consequatur.', 81, 'Magnam debitis rerum consequatur.', 'Blog', 0, '2026-05-07 04:08:50', '2026-05-07 04:08:50'),
+	(94, 4, 'Laborum provident in minima et ab animi. Aperiam aut dicta consequuntur. Omnis et saepe aut voluptas doloremque.', 63, 'Commodi dolore voluptatem sunt.', 'Amigo', 1, '2026-05-07 04:08:50', '2026-05-07 04:08:50'),
+	(95, 4, 'Aperiam deserunt provident repudiandae ea labore vitae vel. Deserunt temporibus id error.', 65, 'Id sit.', 'Skoob', 1, '2026-05-07 04:08:50', '2026-05-07 04:08:50'),
+	(96, 3, 'Tenetur vitae qui ipsam et quia sit sit assumenda. Sit iste iste voluptatem voluptatum. Placeat ratione dignissimos dolorem quae odio non pariatur.', 46, 'Veritatis maiores voluptatem nihil.', 'Skoob', 1, '2026-05-07 04:08:50', '2026-05-07 04:08:50'),
+	(97, 2, 'Incidunt in rerum animi explicabo debitis voluptas numquam. Dicta temporibus voluptatem sunt dolorum. Culpa exercitationem possimus eaque omnis esse. Asperiores ut aut nisi molestiae eligendi.', 52, 'Illum saepe.', 'Skoob', 0, '2026-05-07 04:08:50', '2026-05-07 04:08:50'),
+	(98, 2, 'Et et sequi voluptas impedit vel. Enim voluptas cumque totam neque est. Velit ut distinctio autem molestiae. Deserunt adipisci incidunt laborum harum. Qui id consectetur voluptas molestias.', 13, 'Neque accusantium qui animi.', 'Amigo', 1, '2026-05-07 04:08:50', '2026-05-07 04:08:50'),
+	(99, 1, 'Suscipit unde magnam dolores architecto temporibus ut. Natus perferendis consequatur quas recusandae aut repellat sit et. Voluptate voluptatem rem blanditiis qui modi voluptatem. Voluptatem sit qui laboriosam voluptatum inventore minima doloremque possimus. Explicabo voluptatem qui error aut magnam.', 53, 'At facere cum numquam.', 'Goodreads', 0, '2026-05-07 04:08:50', '2026-05-07 04:08:50'),
+	(100, 1, 'Iure voluptatem dolorum eum ratione. Quia culpa ad quibusdam vitae.', 82, 'Rem non deserunt optio.', 'Blog', 1, '2026-05-07 04:08:50', '2026-05-07 04:08:50'),
+	(101, 1, 'Omnis omnis temporibus et ratione consectetur inventore. Ut cumque qui iusto eius. Corporis vitae magnam quos. Sint autem ut ut ea illo quidem sed.', 23, 'Et dolorem in et.', 'Amigo', 0, '2026-05-07 04:08:50', '2026-05-07 04:08:50'),
+	(102, 3, 'Et et possimus omnis dolorem ab. Voluptatem minus nostrum commodi. Et qui ut vero repellat saepe exercitationem rerum. Est quia doloribus aut esse nobis veniam sunt. Iure voluptate ut aliquam aut.', 30, 'Ab necessitatibus sed eius.', 'Skoob', 1, '2026-05-07 04:08:50', '2026-05-07 04:08:50'),
+	(103, 4, 'Asperiores pariatur tenetur vel consequuntur. Aliquid qui non iure dolorem sit quisquam.', 93, 'Iure fugiat omnis.', 'Goodreads', 1, '2026-05-07 04:08:50', '2026-05-07 04:08:50'),
+	(104, 1, 'Sit officiis vel sint distinctio quo quos. Vero inventore aliquid unde. Sint in ut similique suscipit ut earum. Numquam quia est tenetur veritatis.', 19, 'Rem ipsam atque.', 'Goodreads', 0, '2026-05-07 04:08:50', '2026-05-07 04:08:50'),
+	(105, 5, 'Quo repudiandae aut laudantium enim voluptatibus labore. Delectus delectus assumenda accusantium asperiores aliquid. Consequatur sed illo a modi.', 36, 'Corporis est illum ipsam facilis.', 'Skoob', 0, '2026-05-07 04:08:50', '2026-05-07 04:08:50'),
+	(106, 1, 'Architecto necessitatibus et praesentium hic soluta reprehenderit aut libero. Sunt vero nostrum ipsam libero iure omnis id. Praesentium est voluptatum officia voluptate esse qui officiis. Quos nobis in provident et.', 49, 'Nihil dolorem et voluptatem.', 'Amigo', 0, '2026-05-07 04:08:50', '2026-05-07 04:08:50'),
+	(107, 3, 'Molestias numquam autem est voluptatibus dolore est sapiente labore. Dolores autem architecto ut ipsum dolores dolore magni veritatis. Dignissimos dignissimos nobis sunt et recusandae et. Dicta vero illum quibusdam corporis. Vero in cumque maxime blanditiis beatae non quis.', 9, 'In ducimus asperiores sit.', 'Goodreads', 0, '2026-05-07 04:08:50', '2026-05-07 04:08:50'),
+	(108, 5, 'Qui aut itaque quaerat. Similique debitis aut voluptatum est cupiditate aut excepturi. Quos quia reiciendis reprehenderit autem ea atque incidunt et.', 95, 'Quis perferendis ut.', 'Skoob', 1, '2026-05-07 04:08:50', '2026-05-07 04:08:50'),
+	(109, 5, 'Aut reprehenderit saepe est ducimus atque. Ut optio voluptatem omnis hic error at autem. Autem sed numquam ipsum qui consequuntur.', 74, 'Nam consequatur animi dolorem.', 'Skoob', 1, '2026-05-07 04:08:50', '2026-05-07 04:08:50'),
+	(110, 1, 'Dicta sint sed officia aut qui. Aut assumenda velit iste deleniti reiciendis sit. Sapiente aut similique eveniet sed tenetur perspiciatis.', 89, 'Aliquam ad ducimus quos voluptate.', 'Amigo', 0, '2026-05-07 04:08:50', '2026-05-07 04:08:50'),
+	(111, 2, 'Ut voluptatem delectus ut beatae velit aut eaque. Pariatur tempore qui recusandae temporibus ipsa qui quos.', 25, 'Et ut molestias neque.', 'Blog', 1, '2026-05-07 04:08:50', '2026-05-07 04:08:50'),
+	(112, 4, 'Autem et iste ipsam corrupti et. Magni in exercitationem similique aut voluptates occaecati quis nam. Consectetur quia et modi ab labore. Itaque et sapiente optio officia occaecati.', 41, 'Voluptas temporibus quibusdam deleniti.', 'Goodreads', 0, '2026-05-07 04:08:50', '2026-05-07 04:08:50'),
+	(113, 1, 'Ab sed soluta voluptatem ipsa laudantium at. Necessitatibus quia sunt est omnis. Ullam dolorem laboriosam nam itaque sit. Quos at sit tempora a sed.', 23, 'Voluptatibus quo at optio.', 'Blog', 1, '2026-05-07 04:08:50', '2026-05-07 04:08:50'),
+	(114, 5, 'Ut explicabo rerum unde illo illo odio repellat fugit. Cumque dicta a ex quisquam. Dignissimos ut fugit alias excepturi eaque eum molestiae iste. Et consectetur ea id molestiae ex.', 55, 'Ipsum nemo eius quis.', 'Amigo', 1, '2026-05-07 04:08:50', '2026-05-07 04:08:50'),
+	(115, 4, 'Voluptatem in non ab sunt itaque autem. Molestias voluptates deserunt culpa autem laudantium aliquid ullam cupiditate. Fugit sit deleniti recusandae consequuntur occaecati. Suscipit incidunt illo aut autem. Non consequatur esse necessitatibus doloremque accusamus tempora.', 76, 'Hic quo accusantium quia.', 'Goodreads', 1, '2026-05-07 04:08:50', '2026-05-07 04:08:50'),
+	(116, 3, 'Iure blanditiis quae exercitationem adipisci harum. Repellat fugit voluptatem suscipit unde ad. Quaerat dolor perspiciatis veniam quas aut. Perferendis dolores reprehenderit eaque ut.', 40, 'Id dolores et.', 'Goodreads', 1, '2026-05-07 04:08:50', '2026-05-07 04:08:50'),
+	(117, 3, 'Qui sapiente voluptatem sequi. Aspernatur cum sit beatae iste cum. Deleniti deleniti fugit ut eos dignissimos eos. Quo ut repudiandae aut omnis.', 24, 'Soluta similique magni.', 'Blog', 1, '2026-05-07 04:08:50', '2026-05-07 04:08:50'),
+	(118, 4, 'Nihil qui quos neque non voluptatem magni qui dolor. Corporis ea dolores debitis perferendis placeat. In error accusantium repudiandae earum repudiandae doloribus. Explicabo sapiente dolores dolor eius molestiae.', 11, 'Asperiores incidunt perferendis vel.', 'Goodreads', 0, '2026-05-07 04:08:50', '2026-05-07 04:08:50'),
+	(119, 5, 'Dolores dolorem fugit nesciunt eum architecto. Aliquid eveniet sit aliquid temporibus enim facilis. Iure dolorem aut pariatur explicabo autem possimus quasi vel.', 87, 'Vel repudiandae quos consequatur debitis.', 'Goodreads', 1, '2026-05-07 04:08:50', '2026-05-07 04:08:50'),
+	(120, 2, 'Et nemo eos incidunt rerum et. Expedita delectus natus natus similique. Sed ut excepturi qui soluta laborum.', 44, 'Omnis quaerat iste ipsam et.', 'Amigo', 1, '2026-05-07 04:08:50', '2026-05-07 04:08:50'),
+	(121, 2, 'aa', 1, 'aaaaaa', 'Goodreads', 0, '2026-05-12 00:07:32', '2026-05-12 00:07:32'),
+	(122, 1, 'a', 3, 'a', 'Blog', 1, '2026-05-12 00:27:08', '2026-05-12 00:27:08');
 
--- Copiando dados para a tabela bancopweb.categorias: ~5 rows (aproximadamente)
 INSERT IGNORE INTO `categorias` (`id`, `nome`, `descricao`, `created_at`, `updated_at`) VALUES
-	(1, 'quisquam', 'Enim amet qui sit excepturi blanditiis.', '2026-03-20 22:52:30', '2026-03-20 22:52:30'),
-	(2, 'et', 'Blanditiis earum est molestias natus voluptatum quia voluptas consectetur.', '2026-03-20 22:52:30', '2026-03-20 22:52:30'),
-	(3, 'numquam', 'Vel qui commodi distinctio dolores voluptas earum illum.', '2026-03-20 22:52:30', '2026-03-20 22:52:30'),
-	(4, 'in', 'Repellat earum earum enim dolor dolore.', '2026-03-20 22:52:30', '2026-03-20 22:52:30'),
-	(5, 'et', 'Unde tempore tempora perspiciatis atque dolores velit molestias.', '2026-03-20 22:52:30', '2026-03-20 22:52:30');
+	(1, 'rerum', 'Voluptas voluptas recusandae consectetur consequatur voluptatem quia veritatis.', '2026-05-07 04:08:48', '2026-05-07 04:08:48'),
+	(2, 'exercitationem', 'Qui distinctio velit quia molestias molestiae ut.', '2026-05-07 04:08:48', '2026-05-07 04:08:48'),
+	(3, 'perferendis', 'Expedita ad unde dignissimos rerum dolores.', '2026-05-07 04:08:48', '2026-05-07 04:08:48'),
+	(4, 'voluptatem', 'Quasi tenetur voluptatum voluptates at sed voluptates.', '2026-05-07 04:08:48', '2026-05-07 04:08:48'),
+	(5, 'dolore', 'Velit quae magni culpa dignissimos.', '2026-05-07 04:08:48', '2026-05-07 04:08:48'),
+	(6, 'iure', 'Dolorum ipsam amet autem reiciendis suscipit.', '2026-05-07 04:08:48', '2026-05-07 04:08:48'),
+	(7, 'accusamus', 'Odit ut sed rerum eum.', '2026-05-07 04:08:48', '2026-05-07 04:08:48'),
+	(8, 'a', 'Dolores voluptatum voluptatibus soluta velit quasi rerum vel.', '2026-05-07 04:08:48', '2026-05-07 04:08:48'),
+	(9, 'rerum', 'Nisi aliquid rerum et et illum deleniti sit eos.', '2026-05-07 04:08:48', '2026-05-07 04:08:48'),
+	(10, 'hic', 'Sed sit est voluptatum nihil amet natus eos aliquid.', '2026-05-07 04:08:48', '2026-05-07 04:08:48');
 
--- Copiando estrutura para tabela bancopweb.editoras
-CREATE TABLE IF NOT EXISTS `editoras` (
-  `id` bigint unsigned NOT NULL AUTO_INCREMENT,
-  `nome` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `cidade` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `ano_fundacao` int DEFAULT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
--- Copiando dados para a tabela bancopweb.editoras: ~5 rows (aproximadamente)
 INSERT IGNORE INTO `editoras` (`id`, `nome`, `cidade`, `ano_fundacao`, `created_at`, `updated_at`) VALUES
-	(1, 'Herzog, Gibson and Beier', 'Hilpertport', 1928, '2026-03-20 22:52:30', '2026-03-20 22:52:30'),
-	(2, 'Kulas PLC', 'Jordonfurt', 1973, '2026-03-20 22:52:30', '2026-03-20 22:52:30'),
-	(3, 'Ankunding PLC', 'Kesslershire', 1947, '2026-03-20 22:52:30', '2026-03-20 22:52:30'),
-	(5, 'Bartoletti, Stracke and Armstrong', 'East Rodrigoside', 2013, '2026-03-20 22:52:30', '2026-03-20 22:52:30'),
-	(8, 'Editora de livros', 'Cidade de livros', 12982, '2026-03-27 21:45:57', '2026-03-27 21:45:57');
+	(1, 'Koss, Cummerata and Schneider', 'São Paulo', 1971, '2026-05-07 04:08:48', '2026-05-07 04:08:48'),
+	(2, 'Wolff, McCullough and Spinka', 'Brasília', 1944, '2026-05-07 04:08:48', '2026-05-07 04:08:48'),
+	(3, 'Miller, O\'Conner and Blanda', 'Brasília', 2016, '2026-05-07 04:08:48', '2026-05-07 04:08:48'),
+	(4, 'Bashirian PLC', 'Brasília', 1902, '2026-05-07 04:08:48', '2026-05-07 04:08:48'),
+	(5, 'Cruickshank-Metz', 'Chapecó', 1910, '2026-05-07 04:08:48', '2026-05-07 04:08:48'),
+	(6, 'Ullrich-Veum', 'Rio de Janeiro', 1997, '2026-05-07 04:08:48', '2026-05-07 04:08:48'),
+	(7, 'Littel-Kihn', 'Porto Alegre', 1921, '2026-05-07 04:08:48', '2026-05-07 04:08:48'),
+	(8, 'Mann Ltd', 'São Paulo', 1944, '2026-05-07 04:08:48', '2026-05-07 04:08:48'),
+	(9, 'Carroll-Sipes', 'Rio de Janeiro', 1909, '2026-05-07 04:08:48', '2026-05-07 04:08:48'),
+	(10, 'Mueller and Sons', 'Rio de Janeiro', 1961, '2026-05-07 04:08:48', '2026-05-07 04:08:48'),
+	(11, 'Koch-Stanton', 'Porto Alegre', 1991, '2026-05-07 04:08:48', '2026-05-07 04:08:48'),
+	(12, 'O\'Conner PLC', 'Porto Alegre', 1949, '2026-05-07 04:08:48', '2026-05-07 04:08:48'),
+	(13, 'Gleichner-Lubowitz', 'Rio de Janeiro', 1978, '2026-05-07 04:08:48', '2026-05-07 04:08:48'),
+	(14, 'Graham, Hoppe and Considine', 'Chapecó', 2002, '2026-05-07 04:08:48', '2026-05-07 04:08:48'),
+	(15, 'Rolfson, Nolan and Nikolaus', 'Porto Alegre', 1943, '2026-05-07 04:08:48', '2026-05-07 04:08:48');
 
--- Copiando estrutura para tabela bancopweb.failed_jobs
-CREATE TABLE IF NOT EXISTS `failed_jobs` (
-  `id` bigint unsigned NOT NULL AUTO_INCREMENT,
-  `uuid` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `connection` text COLLATE utf8mb4_unicode_ci NOT NULL,
-  `queue` text COLLATE utf8mb4_unicode_ci NOT NULL,
-  `payload` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
-  `exception` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
-  `failed_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `failed_jobs_uuid_unique` (`uuid`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Copiando dados para a tabela bancopweb.failed_jobs: ~0 rows (aproximadamente)
+INSERT IGNORE INTO `livros` (`id`, `titulo`, `ano`, `autor_id`, `categoria_id`, `editora_id`, `saga_id`, `created_at`, `updated_at`) VALUES
+	(1, 'Voluptatibus voluptatem illo cumque.', 1951, 7, 3, 7, NULL, '2026-05-07 04:08:49', '2026-05-07 04:08:49'),
+	(2, 'Expedita qui.', 1922, 14, 8, 5, NULL, '2026-05-07 04:08:49', '2026-05-07 04:08:49'),
+	(3, 'Autem qui tempora.', 1998, 12, 4, 1, NULL, '2026-05-07 04:08:49', '2026-05-07 04:08:49'),
+	(4, 'Omnis molestias quaerat.', 1996, 15, 2, 15, NULL, '2026-05-07 04:08:49', '2026-05-07 04:08:49'),
+	(5, 'Repellat ea eius esse quisquam.', 1989, 19, 1, 1, NULL, '2026-05-07 04:08:49', '2026-05-07 04:08:49'),
+	(6, 'Aut et corrupti.', 1931, 6, 6, 8, NULL, '2026-05-07 04:08:49', '2026-05-07 04:08:49'),
+	(7, 'Commodi molestiae tenetur id.', 1932, 2, 1, 13, NULL, '2026-05-07 04:08:49', '2026-05-07 04:08:49'),
+	(8, 'Pariatur autem corporis.', 1918, 6, 8, 8, NULL, '2026-05-07 04:08:49', '2026-05-07 04:08:49'),
+	(9, 'Eius recusandae dolores.', 1943, 12, 9, 15, NULL, '2026-05-07 04:08:49', '2026-05-07 04:08:49'),
+	(10, 'Laudantium et.', 2021, 18, 5, 6, NULL, '2026-05-07 04:08:49', '2026-05-07 04:08:49'),
+	(11, 'Corporis perferendis voluptatem corporis.', 1952, 5, 5, 4, NULL, '2026-05-07 04:08:49', '2026-05-07 04:08:49'),
+	(12, 'Et dolorem molestias optio.', 1938, 13, 5, 6, NULL, '2026-05-07 04:08:49', '2026-05-07 04:08:49'),
+	(13, 'Voluptate repellat impedit.', 2009, 1, 2, 6, NULL, '2026-05-07 04:08:49', '2026-05-07 04:08:49'),
+	(14, 'Consequatur animi ullam quam doloremque.', 2005, 15, 7, 7, NULL, '2026-05-07 04:08:49', '2026-05-07 04:08:49'),
+	(15, 'Consequuntur qui enim numquam.', 1900, 11, 5, 5, NULL, '2026-05-07 04:08:49', '2026-05-07 04:08:49'),
+	(16, 'Eum soluta illum est.', 2007, 9, 4, 2, NULL, '2026-05-07 04:08:49', '2026-05-07 04:08:49'),
+	(17, 'Dolores alias temporibus rerum.', 2009, 1, 3, 10, NULL, '2026-05-07 04:08:49', '2026-05-07 04:08:49'),
+	(18, 'Eligendi neque velit.', 1955, 11, 7, 2, NULL, '2026-05-07 04:08:49', '2026-05-07 04:08:49'),
+	(19, 'Ut ipsum explicabo quo.', 1937, 1, 4, 4, NULL, '2026-05-07 04:08:49', '2026-05-07 04:08:49'),
+	(20, 'Est sit est aut.', 1912, 20, 4, 1, NULL, '2026-05-07 04:08:49', '2026-05-07 04:08:49'),
+	(21, 'Omnis necessitatibus ut.', 1978, 4, 9, 1, NULL, '2026-05-07 04:08:49', '2026-05-07 04:08:49'),
+	(22, 'Sed suscipit.', 1981, 9, 8, 12, NULL, '2026-05-07 04:08:49', '2026-05-07 04:08:49'),
+	(23, 'Ullam et ut facilis.', 1903, 4, 9, 12, NULL, '2026-05-07 04:08:49', '2026-05-07 04:08:49'),
+	(24, 'Autem minus autem.', 1992, 9, 10, 11, NULL, '2026-05-07 04:08:49', '2026-05-07 04:08:49'),
+	(25, 'Sunt totam eum.', 1939, 14, 3, 4, NULL, '2026-05-07 04:08:49', '2026-05-07 04:08:49'),
+	(26, 'Facilis officiis rem tenetur voluptas.', 1920, 15, 1, 3, NULL, '2026-05-07 04:08:49', '2026-05-07 04:08:49'),
+	(27, 'Libero dolor quis.', 1960, 16, 1, 13, NULL, '2026-05-07 04:08:49', '2026-05-07 04:08:49'),
+	(28, 'Quas nisi eum est dicta.', 2017, 24, 2, 3, NULL, '2026-05-07 04:08:49', '2026-05-07 04:08:49'),
+	(29, 'Aperiam sequi.', 1980, 7, 4, 4, NULL, '2026-05-07 04:08:49', '2026-05-07 04:08:49'),
+	(30, 'Praesentium voluptas adipisci.', 1940, 22, 2, 9, NULL, '2026-05-07 04:08:49', '2026-05-07 04:08:49'),
+	(31, 'Occaecati in inventore ea molestiae.', 1909, 16, 4, 4, NULL, '2026-05-07 04:08:49', '2026-05-07 04:08:49'),
+	(32, 'Esse dolorum omnis quis.', 2004, 17, 4, 6, NULL, '2026-05-07 04:08:49', '2026-05-07 04:08:49'),
+	(33, 'Illum accusantium voluptas ipsa.', 2002, 7, 2, 13, NULL, '2026-05-07 04:08:49', '2026-05-07 04:08:49'),
+	(34, 'Explicabo culpa voluptatibus quod.', 1963, 2, 6, 12, NULL, '2026-05-07 04:08:49', '2026-05-07 04:08:49'),
+	(35, 'Qui ut modi ratione.', 1915, 19, 2, 1, NULL, '2026-05-07 04:08:49', '2026-05-07 04:08:49'),
+	(36, 'Et quos nostrum minus.', 1915, 2, 9, 2, NULL, '2026-05-07 04:08:49', '2026-05-07 04:08:49'),
+	(37, 'Ut beatae et.', 1986, 7, 4, 12, NULL, '2026-05-07 04:08:49', '2026-05-07 04:08:49'),
+	(38, 'Est a maxime et.', 1932, 23, 5, 11, NULL, '2026-05-07 04:08:49', '2026-05-07 04:08:49'),
+	(39, 'Et sint ea officia.', 1993, 23, 5, 8, NULL, '2026-05-07 04:08:49', '2026-05-07 04:08:49'),
+	(40, 'Non consectetur inventore.', 2024, 4, 7, 9, NULL, '2026-05-07 04:08:49', '2026-05-07 04:08:49'),
+	(41, 'Ut sit magnam natus.', 1951, 7, 8, 8, NULL, '2026-05-07 04:08:49', '2026-05-07 04:08:49'),
+	(42, 'Blanditiis natus.', 1931, 5, 1, 4, NULL, '2026-05-07 04:08:49', '2026-05-07 04:08:49'),
+	(43, 'Ratione aut et et.', 1934, 9, 2, 15, NULL, '2026-05-07 04:08:49', '2026-05-07 04:08:49'),
+	(44, 'Consequatur esse.', 1986, 5, 9, 5, NULL, '2026-05-07 04:08:49', '2026-05-07 04:08:49'),
+	(45, 'Suscipit ducimus eum suscipit.', 2017, 20, 6, 11, NULL, '2026-05-07 04:08:49', '2026-05-07 04:08:49'),
+	(46, 'Omnis quisquam odit aut.', 1990, 13, 4, 5, NULL, '2026-05-07 04:08:49', '2026-05-07 04:08:49'),
+	(47, 'Quo sunt quae sunt.', 1956, 18, 6, 15, NULL, '2026-05-07 04:08:49', '2026-05-07 04:08:49'),
+	(48, 'Eum perferendis voluptatem aspernatur.', 1945, 6, 8, 14, NULL, '2026-05-07 04:08:49', '2026-05-07 04:08:49'),
+	(49, 'Qui ratione et sed.', 1901, 12, 3, 8, NULL, '2026-05-07 04:08:49', '2026-05-07 04:08:49'),
+	(50, 'Est aliquam et voluptatum.', 1935, 21, 1, 11, NULL, '2026-05-07 04:08:49', '2026-05-07 04:08:49'),
+	(51, 'Rerum quo est praesentium.', 1953, 10, 5, 4, NULL, '2026-05-07 04:08:49', '2026-05-07 04:08:49'),
+	(52, 'Ab totam nostrum nulla.', 1991, 6, 8, 3, NULL, '2026-05-07 04:08:49', '2026-05-07 04:08:49'),
+	(53, 'Voluptatibus necessitatibus quia aut.', 1907, 8, 4, 1, NULL, '2026-05-07 04:08:49', '2026-05-07 04:08:49'),
+	(54, 'Dolorem dolores tempore.', 1999, 6, 1, 5, NULL, '2026-05-07 04:08:49', '2026-05-07 04:08:49'),
+	(55, 'Sit rem reprehenderit commodi.', 1906, 20, 5, 5, NULL, '2026-05-07 04:08:49', '2026-05-07 04:08:49'),
+	(56, 'Non est.', 1984, 7, 9, 14, NULL, '2026-05-07 04:08:49', '2026-05-07 04:08:49'),
+	(57, 'Et non.', 1927, 7, 3, 9, NULL, '2026-05-07 04:08:49', '2026-05-07 04:08:49'),
+	(58, 'Praesentium beatae.', 1954, 5, 6, 10, NULL, '2026-05-07 04:08:49', '2026-05-07 04:08:49'),
+	(59, 'Minima consequuntur iste molestiae.', 2004, 1, 9, 1, NULL, '2026-05-07 04:08:49', '2026-05-07 04:08:49'),
+	(60, 'Alias id et et.', 1954, 7, 4, 3, NULL, '2026-05-07 04:08:49', '2026-05-07 04:08:49'),
+	(61, 'Voluptatem porro et tenetur.', 1993, 9, 3, 3, NULL, '2026-05-07 04:08:49', '2026-05-07 04:08:49'),
+	(62, 'Aperiam eum molestiae explicabo saepe.', 1977, 2, 8, 1, NULL, '2026-05-07 04:08:49', '2026-05-07 04:08:49'),
+	(63, 'Ex ullam tempora omnis.', 2007, 5, 3, 5, NULL, '2026-05-07 04:08:49', '2026-05-07 04:08:49'),
+	(64, 'Delectus cum eum repellendus.', 1904, 11, 7, 12, NULL, '2026-05-07 04:08:49', '2026-05-07 04:08:49'),
+	(65, 'Tenetur cum.', 1946, 5, 8, 9, NULL, '2026-05-07 04:08:49', '2026-05-07 04:08:49'),
+	(66, 'Quam rerum omnis.', 1906, 12, 9, 4, NULL, '2026-05-07 04:08:49', '2026-05-07 04:08:49'),
+	(67, 'Aperiam harum corrupti.', 1927, 19, 9, 6, NULL, '2026-05-07 04:08:49', '2026-05-07 04:08:49'),
+	(68, 'Eos repellendus cum harum.', 1942, 25, 4, 6, NULL, '2026-05-07 04:08:49', '2026-05-07 04:08:49'),
+	(69, 'Itaque asperiores a mollitia.', 1942, 7, 4, 14, NULL, '2026-05-07 04:08:49', '2026-05-07 04:08:49'),
+	(70, 'Illum sed consequatur eum.', 1911, 21, 3, 12, NULL, '2026-05-07 04:08:49', '2026-05-07 04:08:49'),
+	(71, 'Aspernatur et officia dolorem.', 2004, 17, 9, 12, NULL, '2026-05-07 04:08:49', '2026-05-07 04:08:49'),
+	(72, 'Qui ducimus similique architecto sunt.', 2009, 24, 10, 11, NULL, '2026-05-07 04:08:49', '2026-05-07 04:08:49'),
+	(73, 'Eos eveniet quidem.', 2022, 7, 6, 1, NULL, '2026-05-07 04:08:49', '2026-05-07 04:08:49'),
+	(74, 'Asperiores tempora fugit odio.', 1944, 6, 1, 6, NULL, '2026-05-07 04:08:49', '2026-05-07 04:08:49'),
+	(75, 'Ipsum necessitatibus ut.', 1995, 15, 9, 14, NULL, '2026-05-07 04:08:49', '2026-05-07 04:08:49'),
+	(76, 'Et aliquid voluptatem suscipit.', 1918, 22, 4, 11, NULL, '2026-05-07 04:08:49', '2026-05-07 04:08:49'),
+	(77, 'Quidem vitae maxime.', 1975, 9, 6, 6, NULL, '2026-05-07 04:08:49', '2026-05-07 04:08:49'),
+	(78, 'Aliquid voluptas voluptatem.', 2012, 15, 10, 2, NULL, '2026-05-07 04:08:49', '2026-05-07 04:08:49'),
+	(79, 'Corporis dolorem quia consectetur.', 2010, 2, 7, 4, NULL, '2026-05-07 04:08:49', '2026-05-07 04:08:49'),
+	(80, 'Temporibus dolor omnis.', 1923, 2, 9, 9, NULL, '2026-05-07 04:08:49', '2026-05-07 04:08:49'),
+	(81, 'Hic eligendi iste sit.', 2008, 15, 7, 4, NULL, '2026-05-07 04:08:49', '2026-05-07 04:08:49'),
+	(82, 'Molestias quibusdam officia pariatur commodi.', 1975, 14, 8, 5, NULL, '2026-05-07 04:08:49', '2026-05-07 04:08:49'),
+	(83, 'Qui laborum ut quidem.', 1936, 9, 1, 14, NULL, '2026-05-07 04:08:49', '2026-05-07 04:08:49'),
+	(84, 'Nobis commodi itaque sint.', 1967, 2, 2, 9, NULL, '2026-05-07 04:08:49', '2026-05-07 04:08:49'),
+	(85, 'Nisi deserunt quia dignissimos.', 1972, 15, 1, 8, NULL, '2026-05-07 04:08:49', '2026-05-07 04:08:49'),
+	(86, 'Consequuntur facilis quod.', 1993, 1, 5, 11, NULL, '2026-05-07 04:08:49', '2026-05-07 04:08:49'),
+	(87, 'Ut libero nisi quas.', 1963, 17, 5, 7, NULL, '2026-05-07 04:08:49', '2026-05-07 04:08:49'),
+	(88, 'Quisquam dolorem.', 1925, 7, 4, 11, NULL, '2026-05-07 04:08:49', '2026-05-07 04:08:49'),
+	(89, 'Qui ut non qui.', 1936, 10, 2, 15, NULL, '2026-05-07 04:08:49', '2026-05-07 04:08:49'),
+	(90, 'Autem culpa cumque.', 1990, 4, 6, 6, NULL, '2026-05-07 04:08:49', '2026-05-07 04:08:49'),
+	(91, 'Corrupti dicta labore non.', 1964, 4, 1, 6, NULL, '2026-05-07 04:08:49', '2026-05-07 04:08:49'),
+	(92, 'Corporis repellendus vitae.', 1994, 10, 5, 7, NULL, '2026-05-07 04:08:49', '2026-05-07 04:08:49'),
+	(93, 'Porro eum molestiae.', 1981, 6, 6, 10, NULL, '2026-05-07 04:08:49', '2026-05-07 04:08:49'),
+	(94, 'Eum eum et accusantium.', 1967, 17, 10, 14, NULL, '2026-05-07 04:08:49', '2026-05-07 04:08:49'),
+	(95, 'Dolorem est ipsa.', 1961, 17, 8, 2, NULL, '2026-05-07 04:08:49', '2026-05-07 04:08:49');
 
--- Copiando estrutura para tabela bancopweb.livros
-CREATE TABLE IF NOT EXISTS `livros` (
-  `id` bigint unsigned NOT NULL AUTO_INCREMENT,
-  `titulo` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `ano` int NOT NULL,
-  `autor_id` bigint unsigned NOT NULL,
-  `categoria_id` bigint unsigned NOT NULL,
-  `editora_id` bigint unsigned NOT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `livros_autor_id_foreign` (`autor_id`),
-  KEY `livros_categoria_id_foreign` (`categoria_id`),
-  KEY `livros_editora_id_foreign` (`editora_id`),
-  CONSTRAINT `livros_autor_id_foreign` FOREIGN KEY (`autor_id`) REFERENCES `autores` (`id`),
-  CONSTRAINT `livros_categoria_id_foreign` FOREIGN KEY (`categoria_id`) REFERENCES `categorias` (`id`),
-  CONSTRAINT `livros_editora_id_foreign` FOREIGN KEY (`editora_id`) REFERENCES `editoras` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
--- Copiando dados para a tabela bancopweb.livros: ~5 rows (aproximadamente)
-INSERT IGNORE INTO `livros` (`id`, `titulo`, `ano`, `autor_id`, `categoria_id`, `editora_id`, `created_at`, `updated_at`) VALUES
-	(2, 'Quia vel enim et.', 1930, 4, 3, 2, '2026-03-20 22:52:30', '2026-03-20 22:52:30'),
-	(3, 'Nihil a et aspernatur.', 1998, 3, 1, 5, '2026-03-20 22:52:30', '2026-03-20 22:52:30'),
-	(4, 'Ea aut nihil sed.', 1967, 4, 3, 5, '2026-03-20 22:52:30', '2026-03-20 22:52:30'),
-	(5, 'Exercitationem et beatae.', 1900, 3, 3, 2, '2026-03-20 22:52:30', '2026-03-20 22:52:30');
-
--- Copiando estrutura para tabela bancopweb.migrations
-CREATE TABLE IF NOT EXISTS `migrations` (
-  `id` int unsigned NOT NULL AUTO_INCREMENT,
-  `migration` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `batch` int NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
--- Copiando dados para a tabela bancopweb.migrations: ~0 rows (aproximadamente)
 INSERT IGNORE INTO `migrations` (`id`, `migration`, `batch`) VALUES
 	(1, '2014_10_12_000000_create_users_table', 1),
 	(2, '2014_10_12_100000_create_password_reset_tokens_table', 1),
@@ -132,58 +296,34 @@ INSERT IGNORE INTO `migrations` (`id`, `migration`, `batch`) VALUES
 	(5, '2026_03_11_000235_create_editoras_table', 1),
 	(6, '2026_03_11_003150_create_autors_table', 1),
 	(7, '2026_03_11_003225_create_categorias_table', 1),
-	(8, '2026_03_11_003235_create_livros_table', 1);
+	(8, '2026_03_11_003231_create_sagas_table', 1),
+	(9, '2026_03_11_003235_create_livros_table', 1),
+	(10, '2026_05_06_194356_create_avaliacoes_table', 1);
 
--- Copiando estrutura para tabela bancopweb.password_reset_tokens
-CREATE TABLE IF NOT EXISTS `password_reset_tokens` (
-  `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `token` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  PRIMARY KEY (`email`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Copiando dados para a tabela bancopweb.password_reset_tokens: ~0 rows (aproximadamente)
 
--- Copiando estrutura para tabela bancopweb.personal_access_tokens
-CREATE TABLE IF NOT EXISTS `personal_access_tokens` (
-  `id` bigint unsigned NOT NULL AUTO_INCREMENT,
-  `tokenable_type` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `tokenable_id` bigint unsigned NOT NULL,
-  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `token` varchar(64) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `abilities` text COLLATE utf8mb4_unicode_ci,
-  `last_used_at` timestamp NULL DEFAULT NULL,
-  `expires_at` timestamp NULL DEFAULT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `personal_access_tokens_token_unique` (`token`),
-  KEY `personal_access_tokens_tokenable_type_tokenable_id_index` (`tokenable_type`,`tokenable_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+INSERT IGNORE INTO `sagas` (`id`, `nome`, `descricao`, `quantidade_livros`, `ano_inicio`, `created_at`, `updated_at`) VALUES
+	(1, 'Fugiat excepturi veniam.', 'Facilis tenetur mollitia eligendi eum qui nulla commodi. Amet autem quisquam repudiandae eum quae dolorum. Omnis perferendis nobis sit cupiditate rerum id nihil et.', 12, '1984', '2026-05-07 04:08:49', '2026-05-07 04:08:49'),
+	(2, 'Modi unde.', 'Autem eveniet qui repudiandae. Voluptatem illo numquam nostrum adipisci odio. Odit ullam et molestiae reprehenderit velit ut maxime. Autem consequuntur vero totam voluptatem.', 5, '2001', '2026-05-07 04:08:49', '2026-05-07 04:08:49'),
+	(3, 'Velit fuga consequatur.', 'Dolor voluptatum asperiores placeat rem eos. Ut nulla distinctio reiciendis deleniti non molestiae nesciunt. Quia vel accusamus accusantium vel. Labore cupiditate magni nihil sit voluptatem voluptas beatae.', 11, '2016', '2026-05-07 04:08:49', '2026-05-07 04:08:49'),
+	(4, 'Nisi ipsa eum.', 'Voluptatem qui rem id quae consequuntur ea minus rerum. Non repellendus tempore ea voluptatem quia et. Expedita quas quo rem dolor est. Occaecati culpa mollitia laboriosam non. Sunt quod dicta sit modi architecto sit.', 11, '1976', '2026-05-07 04:08:49', '2026-05-07 04:08:49'),
+	(5, 'Dolores neque nam.', 'Dolores vitae suscipit et mollitia debitis non. A deserunt dolor voluptatem quo ea. Dolore laudantium ea nulla molestiae aspernatur.', 9, '2008', '2026-05-07 04:08:49', '2026-05-07 04:08:49'),
+	(6, 'Ea quae ullam.', 'Consequatur asperiores aperiam quam rerum ratione. Ut aut sit saepe.', 7, '1992', '2026-05-07 04:08:49', '2026-05-07 04:08:49'),
+	(7, 'Facere dicta.', 'Esse in nam pariatur nesciunt voluptatem molestias inventore. Enim labore voluptas et quisquam enim veniam fugiat. Ducimus vel voluptatem iure dolorum. Dignissimos ut quasi voluptates tempore doloribus animi doloribus et. Qui nam voluptas doloremque magni saepe ut voluptate.', 3, '1980', '2026-05-07 04:08:49', '2026-05-07 04:08:49'),
+	(8, 'Necessitatibus libero nemo.', 'Consequuntur voluptas eum doloremque iure rerum. Et ab corporis alias quis ipsum corrupti autem id. Autem praesentium cumque hic quam. At qui consequuntur quos impedit quae quo a. Aut quos officiis unde perferendis consequuntur.', 1, '2013', '2026-05-07 04:08:49', '2026-05-07 04:08:49'),
+	(10, 'Aspernatur quibusdam.', 'Quibusdam quo et blanditiis velit. In sit quo pariatur deserunt. Minus qui possimus quia corporis.', 5, '2007', '2026-05-07 04:08:49', '2026-05-07 04:08:49'),
+	(11, 'Quas pariatur autem.', 'Et voluptate accusamus omnis in. Officiis rerum porro minus sequi nam culpa. Quidem est architecto illum non impedit necessitatibus.', 9, '1980', '2026-05-07 04:08:49', '2026-05-07 04:08:49'),
+	(12, 'Adipisci blanditiis.', 'Sit et voluptatem provident quibusdam sunt. Eaque ut dolores reiciendis consectetur et voluptas. Atque rerum ea explicabo est incidunt sequi.', 7, '2004', '2026-05-07 04:08:49', '2026-05-07 04:08:49'),
+	(13, 'Saepe autem adipisci.', 'Sed id dolorem esse rerum. Ratione quia quia dolor aut nihil. Aut tempore sed atque ut velit suscipit.', 13, '2018', '2026-05-07 04:08:49', '2026-05-07 04:08:49'),
+	(14, 'Necessitatibus provident quia.', 'Voluptatibus officiis odit incidunt sit nobis quia. Numquam rerum maiores amet odit cupiditate dignissimos porro. Quasi vel et minus eaque dolorum facilis iusto.', 10, '1994', '2026-05-07 04:08:49', '2026-05-07 04:08:49'),
+	(15, 'Omnis nulla.', 'Sunt reprehenderit fuga inventore eaque. Qui dolor omnis cupiditate quia nihil perferendis recusandae. Natus delectus soluta facilis officiis.', 11, '2013', '2026-05-07 04:08:49', '2026-05-07 04:08:49');
 
--- Copiando dados para a tabela bancopweb.personal_access_tokens: ~0 rows (aproximadamente)
-
--- Copiando estrutura para tabela bancopweb.users
-CREATE TABLE IF NOT EXISTS `users` (
-  `id` bigint unsigned NOT NULL AUTO_INCREMENT,
-  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `email_verified_at` timestamp NULL DEFAULT NULL,
-  `password` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `remember_token` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `users_email_unique` (`email`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
--- Copiando dados para a tabela bancopweb.users: ~5 rows (aproximadamente)
 INSERT IGNORE INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
-	(1, 'Travis Orn', 'ullrich.marietta@example.com', '2026-03-20 22:52:30', '$2y$12$P66xDlLFvlYUq0fMtZQU1urJaYiLh7ye6Vwvy/fm8g3x.ZrRGIH5S', 'IPfs0HrGeu', '2026-03-20 22:52:30', '2026-03-20 22:52:30'),
-	(2, 'Brock Tillman', 'lesly.hudson@example.net', '2026-03-20 22:52:30', '$2y$12$P66xDlLFvlYUq0fMtZQU1urJaYiLh7ye6Vwvy/fm8g3x.ZrRGIH5S', 'E4XrMWDXWI', '2026-03-20 22:52:30', '2026-03-20 22:52:30'),
-	(3, 'Rita Heathcote V', 'noemi.beer@example.org', '2026-03-20 22:52:30', '$2y$12$P66xDlLFvlYUq0fMtZQU1urJaYiLh7ye6Vwvy/fm8g3x.ZrRGIH5S', 'q9cMSXgJqw', '2026-03-20 22:52:30', '2026-03-20 22:52:30'),
-	(4, 'Mr. Nels Blanda Jr.', 'gwyman@example.org', '2026-03-20 22:52:30', '$2y$12$P66xDlLFvlYUq0fMtZQU1urJaYiLh7ye6Vwvy/fm8g3x.ZrRGIH5S', 'MRGrsaxMqZ', '2026-03-20 22:52:30', '2026-03-20 22:52:30'),
-	(5, 'Tyler Considine', 'cremin.april@example.net', '2026-03-20 22:52:30', '$2y$12$P66xDlLFvlYUq0fMtZQU1urJaYiLh7ye6Vwvy/fm8g3x.ZrRGIH5S', '6mxpODGUe5', '2026-03-20 22:52:30', '2026-03-20 22:52:30');
+	(1, 'Noe Rempel', 'romaine73@example.net', '2026-05-07 04:08:49', '$2y$12$29Uhi4SSWBeCA.m/H9VgHuK.Q4wmNw3Jvp2jVF6dqpQZEZiGvQo.u', 'IapoiB7p6V', '2026-05-07 04:08:49', '2026-05-07 04:08:49'),
+	(2, 'Claire Collier', 'hugh.ebert@example.com', '2026-05-07 04:08:49', '$2y$12$29Uhi4SSWBeCA.m/H9VgHuK.Q4wmNw3Jvp2jVF6dqpQZEZiGvQo.u', 'aSIGEktyZb', '2026-05-07 04:08:49', '2026-05-07 04:08:49'),
+	(3, 'Ms. Maudie McKenzie', 'frances.kuphal@example.com', '2026-05-07 04:08:49', '$2y$12$29Uhi4SSWBeCA.m/H9VgHuK.Q4wmNw3Jvp2jVF6dqpQZEZiGvQo.u', 'tpzUxK1sGG', '2026-05-07 04:08:49', '2026-05-07 04:08:49'),
+	(4, 'Adelle Wuckert PhD', 'landen33@example.org', '2026-05-07 04:08:49', '$2y$12$29Uhi4SSWBeCA.m/H9VgHuK.Q4wmNw3Jvp2jVF6dqpQZEZiGvQo.u', 'Gi2J3MbafS', '2026-05-07 04:08:49', '2026-05-07 04:08:49'),
+	(5, 'Kevon Mueller III', 'robel.luz@example.net', '2026-05-07 04:08:49', '$2y$12$29Uhi4SSWBeCA.m/H9VgHuK.Q4wmNw3Jvp2jVF6dqpQZEZiGvQo.u', 'ITptn7BTsH', '2026-05-07 04:08:49', '2026-05-07 04:08:49');
 
 /*!40103 SET TIME_ZONE=IFNULL(@OLD_TIME_ZONE, 'system') */;
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;

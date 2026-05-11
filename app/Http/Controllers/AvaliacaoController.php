@@ -10,9 +10,22 @@ class AvaliacaoController extends Controller
 {
     public function index(Request $request)
     {
-        $avaliacoes = Avaliacao::with('livro')->get();
+        $search = $request->query('search');
 
-        return view('avaliacoes.index', compact('avaliacoes'));
+        $avaliacoes = Avaliacao::with('livro')
+            ->when($search, function ($query, $search) {
+                $query->where(function ($query) use ($search) {
+                    $query->where('titulo', 'like', "%{$search}%")
+                        ->orWhere('comentario', 'like', "%{$search}%")
+                        ->orWhere('origem', 'like', "%{$search}%")
+                        ->orWhereHas('livro', function ($query) use ($search) {
+                            $query->where('titulo', 'like', "%{$search}%");
+                        });
+                });
+            })
+            ->get();
+
+        return view('avaliacoes.index', compact('avaliacoes', 'search'));
     }
 
     public function create()
@@ -26,10 +39,10 @@ class AvaliacaoController extends Controller
     {
         $request->validate([
             'nota' => 'required|integer|min:1|max:5',
-            'comentario' => 'nullable',
-            'titulo' => 'nullable',
-            'recomendado' => 'nullable',
-            'origem' => 'nullable',
+            'comentario' => 'required|string',
+            'titulo' => 'required|string',
+            'recomendado' => 'required|boolean',
+            'origem' => 'required|string',
             'livro_id' => 'required|exists:livros,id',
         ]);
 
@@ -60,10 +73,10 @@ class AvaliacaoController extends Controller
 
         $request->validate([
             'nota' => 'required|integer|min:1|max:5',
-            'comentario' => 'nullable',
-            'titulo' => 'nullable',
-            'recomendado' => 'nullable',
-            'origem' => 'nullable',
+            'comentario' => 'required|string',
+            'titulo' => 'required|string',
+            'recomendado' => 'required|boolean',
+            'origem' => 'required|string',
             'livro_id' => 'required|exists:livros,id',
         ]);
 

@@ -15,6 +15,19 @@
     </a>
 </div>
 
+<div class="mb-4">
+    <form action="{{ route('avaliacoes.index') }}" method="GET" class="d-flex gap-2 flex-wrap">
+        <input type="search" name="search" class="lib-input" placeholder="Buscar por livro, título ou origem" value="{{ $search ?? request('search') }}">
+        <button type="submit" class="btn-sage">
+            <i class="bi bi-search"></i>
+            Buscar
+        </button>
+        @if(request('search'))
+            <a href="{{ route('avaliacoes.index') }}" class="btn-ghost">Limpar</a>
+        @endif
+    </form>
+</div>
+
 <div class="lib-card">
     <div class="table-responsive">
         <table class="lib-table">
@@ -31,7 +44,7 @@
             </thead>
 
             <tbody>
-                @foreach($avaliacoes as $avaliacao)
+                @forelse($avaliacoes as $avaliacao)
                 <tr>
                     <td>{{ $avaliacao->livro->titulo }}</td>
                     <td>⭐ {{ $avaliacao->nota }}</td>
@@ -69,7 +82,13 @@
                     </td>
 
                 </tr>
-                @endforeach
+                @empty
+                <tr>
+                    <td colspan="6" class="text-center" style="padding:24px; color:var(--mist);">
+                        Nenhuma avaliação encontrada.
+                    </td>
+                </tr>
+                @endforelse
             </tbody>
 
         </table>
