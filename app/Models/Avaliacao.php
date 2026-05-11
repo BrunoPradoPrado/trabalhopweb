@@ -17,17 +17,11 @@ class Avaliacao extends Model
         'titulo',
         'recomendado',
         'origem',
-        'livro_id',
-        'usuario_id'
+        'livro_id'
     ];
 
     public function livro()
     {
         return $this->belongsTo(\App\Models\Livro::class);
-    }
-
-    public function usuario()
-    {
-        return $this->belongsTo(\App\Models\User::class);
     }
 }

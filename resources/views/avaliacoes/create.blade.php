@@ -2,101 +2,83 @@
 
 @section('conteudo')
 
-<h1 class="mb-4">Nova Avaliação</h1>
+<div class="d-flex align-items-center justify-content-between mb-4 flex-wrap gap-3">
+    <div>
+        <h1 class="section-heading">
+            <i class="bi bi-star"></i> Nova Avaliação
+        </h1>
+        <p class="section-sub">Registre uma avaliação de livro</p>
+    </div>
+</div>
 
-<form action="{{ route('avaliacoes.store') }}" method="POST" class="card p-4 shadow-sm">
-    @csrf
-
-    <div class="mb-3">
-        <label class="form-label">Livro</label>
-
-        <select name="livro_id" class="form-select" required>
-
-            <option value="">Selecione</option>
-
-            @foreach($livros as $livro)
-                <option value="{{ $livro->id }}">
-                    {{ $livro->titulo }}
-                </option>
-            @endforeach
-
-        </select>
+<div class="lib-card" style="max-width:650px;">
+    <div class="lib-card-header">
+        <span class="lib-card-title">Dados da Avaliação</span>
     </div>
 
-    <div class="mb-3">
-        <label class="form-label">Usuário</label>
+    <div class="p-4">
 
-        <select name="usuario_id" class="form-select">
+        <form action="{{ route('avaliacoes.store') }}" method="POST">
+            @csrf
 
-            <option value="">Selecione (opcional)</option>
+            <div class="mb-4">
+                <label class="lib-label">Livro</label>
+                <select name="livro_id" class="lib-input" required>
+                    <option value="">Selecione</option>
+                    @foreach($livros as $livro)
+                        <option value="{{ $livro->id }}">{{ $livro->titulo }}</option>
+                    @endforeach
+                </select>
+            </div>
 
-            @foreach($usuarios as $usuario)
-                <option value="{{ $usuario->id }}">
-                    {{ $usuario->name }}
-                </option>
-            @endforeach
+            <div class="mb-4">
+                <label class="lib-label">Nota (1 a 5)</label>
+                <input type="number" name="nota" class="lib-input" min="1" max="5" required>
+            </div>
 
-        </select>
+            <div class="mb-4">
+                <label class="lib-label">Título</label>
+                <input type="text" name="titulo" class="lib-input" placeholder="Resumo da avaliação">
+            </div>
+
+            <div class="mb-4">
+                <label class="lib-label">Comentário</label>
+                <textarea name="comentario" class="lib-input" rows="4"></textarea>
+            </div>
+
+            <div class="mb-4">
+                <label class="lib-label">Recomendado</label>
+                <select name="recomendado" class="lib-input">
+                    <option value="">Selecione</option>
+                    <option value="1">Sim</option>
+                    <option value="0">Não</option>
+                </select>
+            </div>
+
+            <div class="mb-4">
+                <label class="lib-label">Origem</label>
+                <select name="origem" class="lib-input">
+                    <option value="">Opcional</option>
+                    <option value="Goodreads">Goodreads</option>
+                    <option value="Skoob">Skoob</option>
+                    <option value="Blog">Blog</option>
+                    <option value="Amigo">Amigo</option>
+                </select>
+            </div>
+
+            <div class="d-flex gap-2">
+                <button class="btn-sage">
+                    <i class="bi bi-check-lg"></i> Salvar
+                </button>
+
+                <a href="{{ route('avaliacoes.index') }}" class="btn-ghost">
+                    Cancelar
+                </a>
+            </div>
+
+        </form>
+
     </div>
-
-    <div class="mb-3">
-        <label class="form-label">Nota</label>
-
-        <input type="number"
-               name="nota"
-               class="form-control"
-               min="1"
-               max="5"
-               required>
-    </div>
-
-    <div class="mb-3">
-        <label class="form-label">Título</label>
-
-        <input type="text"
-               name="titulo"
-               class="form-control"
-               placeholder="Título da avaliação">
-    </div>
-
-    <div class="mb-3">
-        <label class="form-label">Comentário</label>
-
-        <textarea name="comentario"
-                  class="form-control"
-                  rows="4"></textarea>
-    </div>
-
-    <div class="mb-3">
-        <label class="form-label">Recomendado</label>
-
-        <select name="recomendado" class="form-select">
-            <option value="">Selecione</option>
-            <option value="1">Sim</option>
-            <option value="0">Não</option>
-        </select>
-    </div>
-
-    <div class="mb-3">
-        <label class="form-label">Origem</label>
-
-        <select name="origem" class="form-select">
-            <option value="">Selecione (opcional)</option>
-            <option value="Goodreads">Goodreads</option>
-            <option value="Skoob">Skoob</option>
-            <option value="Blog">Blog</option>
-            <option value="Amigo">Amigo</option>
-        </select>
-    </div>
-
-    <button type="submit" class="btn btn-success">
-        Salvar
-    </button>
-
-    <a href="{{ route('avaliacoes.index') }}" class="btn btn-secondary">
-        Voltar
-    </a>
-
-</form>
+</div>
 
 @endsection
